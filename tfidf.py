@@ -36,9 +36,10 @@ full_ds=create_dataset(df_shuffled)
 print(full_ds)
 
 vectorize_layer.adapt(create_dataset(df_shuffled))
-#
-# model = tf.keras.models.Sequential()
-# model.add(tf.keras.Input(shape=(1,), dtype=tf.string))
-# model.add(vectorize_layer)
-# input_data = [["UDRS"], ["Leaf Stall"]]
-# model.predict(input_data)
+
+model = tf.keras.models.Sequential()
+model.add(tf.keras.Input(shape=(1,), dtype=tf.string))
+model.add(vectorize_layer)
+input_data = [["UDRS     "], ["  Leaf Stall  "]]
+predictions = model.predict(input_data)
+print(predictions)

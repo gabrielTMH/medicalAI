@@ -1,0 +1,47 @@
+{%extends 'base.html' %}
+
+{% block head %}
+<title>MedicalAI Website</title>
+{% endblock %}
+
+
+{% block body %}
+<div id="right-column">
+<h2>medical AI</h2>
+<table class="table-bordered">
+    <tr>
+    <th>Problem</th>
+    <th>Error Code 1</th>
+    <th>Error Code 2</th>
+    <th>Error Code 3</th>
+
+    </tr>
+
+{% for ticker in tickers %}
+<tr>
+    <td>{{ ticker.content }}</td>
+    <td>{{ ticker.price_data }}</td>
+    <td>{{ ticker.date_created.date() }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<form action="/" method="POST">
+    <input type="text" name="problem" id="problem">
+    <input type="text" name="error_code1" id="error_code1">
+    <input type="text" name="error_code2" id="error_code2">
+    <input type="text" name="error_code3" id="error_code3">
+
+    <input type="text" name="interlock1" id="interlock1">
+    <input type="text" name="interlock2" id="interlock2">
+    <input type="text" name="interlock3" id="interlock3">
+
+
+    <input type="submit" value="Add Request">
+</form>
+</div>
+
+
+</form>
+
+{% endblock %}

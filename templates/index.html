@@ -10,33 +10,57 @@
 <h2>medical AI</h2>
 <table class="table-bordered">
     <tr>
+    <th>Sub System</th>
     <th>Problem</th>
     <th>Error Code 1</th>
     <th>Error Code 2</th>
     <th>Error Code 3</th>
-
+    <th>Interlock 1</th>
+    <th>Interlock 2</th>
+    <th>Interlock 3</th>
+    <th>Request Date</th>
+    <th>Actions</th>
     </tr>
 
-{% for ticker in tickers %}
+{% for request in requests %}
 <tr>
-    <td>{{ ticker.content }}</td>
-    <td>{{ ticker.price_data }}</td>
-    <td>{{ ticker.date_created.date() }}</td>
+    <td>{{ request.subsystem }}</td>
+    <td>{{ request.problem }}</td>
+    <td>{{ request.error_code1 }}</td>
+    <td>{{ request.error_code2 }}</td>
+    <td>{{ request.error_code3 }}</td>
+    <td>{{ request.interlock1 }}</td>
+    <td>{{ request.interlock2 }}</td>
+    <td>{{ request.interlock3 }}</td>
+    <td>{{ request.date_created.date() }}</td>
+    <td>
+        <a href="/delete/{{ request.id }}">Delete</a>
+        <br>
+        <a href="/update/{{ request.id }}">Change</a>
+
+    </td>
 </tr>
 {% endfor %}
 </table>
 
 <form action="/" method="POST">
+    <label for="problem">Sub System:</label>
+    <input type="text" name="subsystem" id="subsystem">
+    <label for="problem">Problem:</label>
     <input type="text" name="problem" id="problem">
+     <label for="error_code1">Error Code 1:</label>
     <input type="text" name="error_code1" id="error_code1">
+    <label for="error_code2">Error Code 2:</label>
     <input type="text" name="error_code2" id="error_code2">
+    <label for="error_code3">Error Code 3:</label>
     <input type="text" name="error_code3" id="error_code3">
 
+    <label for="interlock1">Interlock 1:</label>
     <input type="text" name="interlock1" id="interlock1">
+    <label for="interlock2">Interlock 2:</label>
     <input type="text" name="interlock2" id="interlock2">
+    <label for="interlock3">Interlock 3:</label>
     <input type="text" name="interlock3" id="interlock3">
-
-
     <input type="submit" value="Add Request">
 </form>
 </div>

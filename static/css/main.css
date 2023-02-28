@@ -1,0 +1,59 @@
+body {
+    color: black;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+h2 {
+    text-align: center;
+}
+table {
+  margin: 0 auto;
+}
+
+th, td {
+    border: 1px solid;
+  }
+
+th {
+    background-color: black;
+    color: white;
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+label {
+  display: inline-block;
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  width: 300px;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+  padding: 5px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+

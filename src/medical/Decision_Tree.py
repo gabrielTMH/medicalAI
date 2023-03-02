@@ -29,3 +29,17 @@ def predict_response(issues_train, issues_test, resolutions_train, resolutions_t
 
 def one_hot_vectorizer(issues, resolutions):
     return pd.get_dummies(issues), pd.get_dummies(resolutions)
+
+
+def tfidf_vectorizer(data, issues, resolutions):
+    has_seen = {}
+    count = 0
+    row_num = 0
+    for resolution in resolutions:
+        if str(resolution) not in has_seen:
+            data.loc[row_num, 'label_num'] = count
+            has_seen[resolution] = count
+            count += 1
+        else:
+            data.loc[row_num, 'label_num'] = has_seen[label]
+        row_num += 1

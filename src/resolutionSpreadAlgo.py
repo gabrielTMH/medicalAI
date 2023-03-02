@@ -1,5 +1,5 @@
 import pandas as pd
-
+import csv
 df = pd.read_excel('TestData.xlsx', na_filter=False)
 
 output = []
@@ -14,7 +14,21 @@ Rules= {'afc':'AFC',
         'pulse': 'gun pulse driver',
         'dqing': 'thyratron grid control pcb',
         'flow switch': 'flow switch'}
-
+def combine_features_from_data(inputFile='example1.csv',outputFile='exmple2.csv',):
+  with open(outputFile, 'w') as outputData:
+    with open(inputFile) as inputData:
+        outputData.write('issue' + ',')
+        outputData.write('label' + '\n')
+        inputReader = csv.reader(inputData)
+        next(inputReader, None)
+        for row in inputReader:
+          for i in range(2,11):
+              if  row[i] in (None, ""):
+                print(row[i])
+                row[i]='-'
+              outputData.write(row[i])
+          outputData.write(',')
+          outputData.write(row[12]+'\n')
 
 def modifyResolution(string):
     string=string.lower()
@@ -29,7 +43,10 @@ def modifyResolution(string):
             string = Rules[rule]
     return string
 
-
+def swap_subsystem_with_problem(dataset):
+    dataset['Sub System'],dataset['Problem'] = dataset['Problem'],dataset['Sub System']
+    dataset = dataset.rename(columns={'Problem': 'Sub System', 'Sub System': 'Problem'})
+    return dataset
 
 for index, row in df.iterrows():
     otherInfo = row[:"Error Code 3"].to_dict()
@@ -51,7 +68,7 @@ for index, row in df.iterrows():
 
 finalOutput = pd.DataFrame(output)
 finalOutput = finalOutput[finalOutput.duplicated(subset='Modified_Resolution', keep=False)]
-
+finalOutput = swap_subsystem_with_problem(finalOutput)
 finalOutput.to_csv('TestDataUpdated.csv')
 print(finalOutput)
 print('hi :}')

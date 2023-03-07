@@ -2,13 +2,14 @@ import pandas as pd
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
+import pickle
 
 
 def Decision_Tree(input_data):
     issues, resolutions = prep_data(input_data)
     vectorized_issues, vectorized_resolutions = vectorize_data(one_hot_vectorizer, issues, resolutions)
     issues_train, issues_test, resolutions_train, resolutions_test = \
-        train_test_split(vectorized_issues, vectorized_resolutions, test_size=0.756, random_state=1)
+        train_test_split(vectorized_issues, vectorized_resolutions, test_size=0.3, random_state=1)
     predict_response(issues_train, issues_test, resolutions_train, resolutions_test)
 
 
@@ -41,5 +42,8 @@ def tfidf_vectorizer(data, issues, resolutions):
             has_seen[resolution] = count
             count += 1
         else:
-            data.loc[row_num, 'label_num'] = has_seen[label]
+            data.loc[row_num, 'label_num'] = has_seen[resolution]
         row_num += 1
+
+def pickling_data(data):
+

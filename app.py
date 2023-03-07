@@ -7,15 +7,13 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///model.db'
 db = SQLAlchemy(app)
 
-#
-# @app.before_first_request
-# def create_tables():
-#     db.create_all()
-
-
-with app.app_context():
-    # create the tables
+@app.before_first_request
+def create_tables():
     db.create_all()
+
+# with app.app_context():
+#     # create the tables
+#     db.create_all()
 
 
 class UserRequest(db.Model):
@@ -29,6 +27,8 @@ class UserRequest(db.Model):
     interlock1 = db.Column(db.String(200), nullable=False)
     interlock2 = db.Column(db.String(200), nullable=False)
     interlock3 = db.Column(db.String(200), nullable=False)
+
+    other_codes = db.Column(db.String(200), nullable=False)
 
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -50,10 +50,17 @@ def index():
         interlock2 = request.form['interlock2']
         interlock3 = request.form['interlock3']
 
+        other_codes = request.form['other_codes']
+
+        #create "issue" for model
+        complete_issue = f'{subsystem}{problem}{error_code1}{error_code2}{error_code3}{interlock1}{interlock2}' \
+                         f'{interlock3}{other_codes}'
+        print(complete_issue)
+
         new_request = UserRequest(subsystem=subsystem, problem=problem, error_code1=error_code1,
                                   error_code2=error_code2, error_code3=error_code3,
                                   interlock1=interlock1, interlock2=interlock2,
-                                  interlock3=interlock3
+                                  interlock3=interlock3, other_codes=other_codes
                                   )
 
         try:

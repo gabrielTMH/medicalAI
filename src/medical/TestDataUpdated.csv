@@ -1,0 +1,181 @@
+,Sub System,Problem,Interlock 1,Interlock 2,Interlock 3,Interlock 4,Interlock 5,Error Code 1,Error Code 2,Error Code 3,Resolution 1
+0,Beam,Output too high.,,,,,,,,,Ion chamber
+1,Beam,GFIL Interlock,GFIL,,,,,,,,Filament PS
+2,Beam,GFIL Interlock,GFIL,,,,,,,,Gun Pulse Driver
+3,Beam,GFIL Interlock,GFIL,,,,,,,,Gun Pulse Driver
+4,Beam,Yield monitor error,YIELD,,,,,,,,Target
+5,Beam,Underdose,UDRS,,,,,,,,Adjusted Gun HV
+6,Beam,GFIL Interlock,GFIL,,,,,,,,Hot Deck PS
+7,Beam,GFIL Interlock,GFIL,,,,,,,,Pulser PCB
+8,Beam,GFIL Interlock,GFIL,,,,,,,,Filament PS
+9,Beam,GFIL Interlock,GFIL,,,,,HD AD+,,,LV PS PS2
+10,Beam,GFIL Interlock,GFIL,,,,,HD AD+,,,Filament PS
+11,Beam,GFIL Interlock,GFIL,,,,,HD AD+,,,Gun Pulse Driver
+12,Beam,Underdose,UDRS1,UDRS2,,,,,,,Cold Deck BP
+13,Beam,Underdose,UDRS1,UDRS2,,,,,,,Gantry Patch Panel
+14,Beam,Underdose,UDRS1,UDRS2,,,,,,,w13
+15,Beam,Underdose,UDRS1,UDRS2,,,,,,,w15
+16,Beam,Underdose,UDRS1,UDRS2,,,,,,,w30
+17,Beam,Underdose,UDRS1,UDRS2,,,,,,,w32
+18,Beam,Underdose,UDRS1,UDRS2,,,,,,,w88
+19,Beam,GFIL Interlock,GFIL,,,,,HVPS+,FIL,,Filament PS
+20,Beam,GFIL Interlock,GFIL,,,,,HVPS+,FIL,,Gun Pulse Driver
+21,Beam,Yield monitor error,YIELD,,,,,,,,Target
+22,Beam,BGM Fault,BGM,,,,,210005,,,Adjusted AFC
+23,Beam,GFIL Interlock,GFIL,,,,,HD AD+,,,Hot Deck PS
+24,Beam,GFIL Interlock,GFIL,,,,,,,,Gun Pulse Driver
+25,Beam,GFIL Interlock,GFIL,,,,,,,,Hot Deck PS
+26,Beam,GFIL Interlock,GFIL,,,,,,,,Emergency Off Reset
+27,Beam,GFIL and HVCB Faults,GFIL,HVCB,,,,,,,Hot Deck BP
+28,Beam,GFIL Interlock,GFIL,,,,,,,,Adjusted Gun HV
+29,Beam,GFIL Interlock,GFIL,,,,,,,,Emergency Off Reset
+30,Beam,GFIL Interlock,GFIL,,,,,,,,Filament PS
+31,Beam,GFIL Interlock,GFIL,,,,,,,,Gun Pulse Driver
+32,Beam,GFIL Interlock,GFIL,,,,,AD Overcurrent,,,Hot Deck BP
+33,Beam,GFIL Interlock,GFIL,,,,,AD Overcurrent,,,LV PS PS2
+34,Beam,GFIL Interlock,GFIL,,,,,,,,Gun Controller
+35,Beam,GFIL Interlock,GFIL,,,,,,,,Gun Pulse Driver
+36,Beam,GFIL Interlock,GFIL,,,,,,,,Filament PS
+37,Beam,GFIL Interlock,GFIL,,,,,,,,Filament PS
+38,Beam,GFIL Interlock,GFIL,,,,,,,,Gun Pulse Driver
+39,Beam,GFIL Interlock,GFIL,,,,,,,,Aztec PS
+40,Beam,GFIL Interlock,GFIL,,,,,HD AD+,HV OFF,EE ROM,HVPS
+41,Beam,GFIL Interlock,GFIL,,,,,HD TEMP,HD AD+,,LV PS PS2
+42,Beam,"GFIL, UDRS, VAC 2",GFIL,UDRS,VAC2,,,,,,Tuned Machine
+43,Beam,GFIL Interlock,GFIL,,,,,,,,Gun Pulse Driver
+44,Beam,GFIL Interlock,GFIL,,,,,,,,Filament PS
+45,Beam,GFIL Interlock,GFIL,,,,,HD AD+,,,Reseat Transformer AC Input Cable
+46,Beam,GFIL Interlock,GFIL,,,,,HD AD+,,,Reseat Cold Deck PS
+47,Beam,GFIL Interlock,GFIL,,,,,,,,Gun Pulse Driver
+48,Beam,GFIL Interlock,GFIL,,,,,,,,Filament PS
+49,Beam,GFIL Interlock,GFIL,,,,,HD AD+,,,Filament Harness
+50,Beam,GFIL Interlock,GFIL,,,,,,,,Filament PS
+51,Beam,GFIL Interlock,GFIL,,,,,,,,Reseat Cold Deck PS
+52,MLC,MLC stuck leaf,MLC,,,,,,,,MLC Motor
+53,MLC,MLC stuck leaf,MLC,,,,,,,,MLC Motor
+54,MLC,MLC stuck leaf,MLC,,,,,,,,Leaf Nut
+55,MLC,MLC stuck leaf,MLC,,,,,,,,Leaf Screw
+56,MLC,MLC stuck leaf,MLC,,,,,,,,Leaf Spring
+57,MLC,MLC Initialization Error,MLC,INIT,SFB,,,,,,SoftPot
+58,MLC,MLC Initialization Error,MLC,INIT,SFB,,,,,,MLC Motor
+59,MLC,MLC Initialization Error,MLC,INIT,SFB,,,,,,Leaf Nut
+60,MLC,MLC Initialization Error,MLC,INIT,SFB,,,,,,Leaf Screw
+61,MLC,MLC Initialization Error,MLC,INIT,SFB,,,,,,Leaf Spring
+62,MLC,MLC Initialization Error,MLC,INIT,,,,,,,SoftPot
+63,MLC,MLC Initialization Error and Leaf Stuck,MLC,INIT,,,,,,,MLC Motor
+64,MLC,MLC Initialization Error,MLC,INIT,,,,,,,MLC Motor
+65,MLC,MLC Initialization Error,MLC,INIT,,,,,,,MLC Motor
+66,MLC,MLC Initialization Error,MLC,INIT,,,,,,,Leaf Nut
+67,MLC,MLC Initialization Error,MLC,INIT,,,,,,,Clean MLC Leaf
+68,MLC,"MLC losing connection, treatment invalid",MLC,,,,,Leaf Stall,,,MLC Motor
+69,MLC,MLC Leaf Stall,MLC,,,,,Leaf Stall,,,MLC Motor
+70,MLC,MLC stuck leaf,MLC,,,,,,,,MLC Motor
+71,MLC,MLC Leaf Error,MLC,,,,,,,,MLC Motor
+72,MLC,MLC stuck leaf,MLC,,,,,,,,MLC Motor
+73,MLC,MLC stuck leaf,MLC,,,,,,,,SoftPot
+74,MLC,MLC stuck leaf,MLC,,,,,,,,Leaf Spring
+75,MLC,MLC Initialization Error,MLC,INIT,,,,,,,Reset Aux Electronics Power
+76,MLC,MLC Initialization Error,MLC,INIT,,,,,,,SoftPot
+77,MLC,"MLC, COL error",MLC,COL,,,,,,,MLC Motor
+78,MLC,"MLC, COL error",MLC,COL,,,,,,,SoftPot
+79,MLC,MLC Leaf Stopping Intermittently,MLC,SFB,,,,,,,SoftPot
+80,MLC,MLC Leaf Stall,MLC,,,,,Leaf Stall,,,Clean MLC Leaf
+81,MLC,"MLC Won't go to plan, Leaf Failure",MLC,,,,,,,,Mosaiq sending wrong MLC plan
+82,MLC,MLC Leaf Error,MLC,,,,,,,,MLC Motor
+83,MLC,MLC Leaf Error,MLC,,,,,,,,Leaf Nut
+84,MLC,MLC Leaf Error,MLC,,,,,,,,Lead Screw
+85,MLC,MLC Leaf Error,MLC,,,,,,,,Clean MLC Leaf
+86,MLC,MLC Stuck Open,MLC,,,,,,,,Reinitialize MLC
+87,MLC,MLC Interlock,MLC,,,,,,,,MLC Motor
+88,MLC,MLC Interlock,MLC,,,,,,,,Leaf Nut
+89,MLC,MLC Initialization Error,MLC,INIT,,,,,,,MLC Motor
+90,MLC,MLC stuck leaf,MLC,,,,,,,,SoftPot
+91,MLC,MLC stuck leaf,MLC,,,,,,,,MLC Motor
+92,MLC,MLC stuck leaf,MLC,,,,,,,,Clean MLC Leaf
+93,MLC,MLC Secondary Feedback Error,MLC,SFB,,,,,,,SoftPot
+94,MLC,MLC Secondary Feedback Error,MLC,SFB,,,,,,,SFB PCB
+95,MLC,MLC Secondary Feedback Error,MLC,SFB,,,,,,,Clean MLC Leaf
+96,Beam,Underdose in morning,UDRS,,,,,,,,RF Driver
+97,Beam,Underdose in morning,UDRS,UDRS1,UDRS2,,,,,,Emergency Off Reset
+98,Beam,Underdose in Photons,UDRS,,,,,,,,3 in 1 Power Supply
+99,Beam,Underdose in 9e,UDRS,,,,,,,,Tuned Machine
+100,Beam,Underdose,UDRS,,,,,,,,Gun Pulse Driver
+101,Beam,Underdose all energies,UDRS,,,,,,,,Tuned Machine
+102,Beam,Underdose,UDRS,,,,,,,,K2 Relay
+103,Beam,Underdose,UDRS,UDRS1,UDRS2,,,,,,W109
+104,Beam,Underdose in Electrons,UDRS,,,,,,,,Gantry Patch Panel
+105,Beam,Underdose in Electrons,UDRS,,,,,,,,Gantry Wind Up Bundle
+106,Beam,Underdose when gantry 180 degrees,UDRS,,,,,,,,W32
+107,Beam,Underdose when gantry 180 degrees,UDRS,,,,,,,,Reset Gun Pulse Driver
+108,Beam,Underdose in 15MV in morning,UDRS,,,,,,,,Gun Controller Grid Voltage
+109,Beam,Underdose in 15MV in morning,UDRS,,,,,,,,Tuned Machine
+110,Beam,Underdose,UDRS,,,,,,,,Cold Deck BP
+111,Beam,Underdose,UDRS,,,,,,,,Gun Crowbar Shockmounts
+112,Beam,Underdose in 6MV and 6e,UDRS,,,,,,,,Cold Deck PS
+113,Beam,Underdose,UDRS,,,,,,,,W30
+114,Beam,Underdose,UDRS,,,,,,,,Tuned AFC
+115,Beam,Underdose in 8MV,UDRS,,,,,,,,AFC Cables
+116,Beam,Underdose in 8MV,UDRS,,,,,,,,Tuned AFC
+117,Beam,Underdose,UDRS,,,,,,,,Thyratron
+118,Beam,Undrdose in 6MV ,UDRS,,,,,,,,PFN Servo PCB
+119,Beam,UDRS and HWFA faults,UDRS,HWFA,,,,,,,DQing Thyratron
+120,Beam,Underdose,UDRS,,,,,,,,PWM PCB
+121,Beam,Underdose,UDRS,UDRS1,UDRS2,,,,,,Gantry Wind Up Bundle
+122,Beam,Underdose when rotating gantry,UDRS,,,,,,,,Gantry Patch Panel
+123,Beam,Underdose,UDRS,EXQ2,,,,,,,Ion chamber cable
+124,Beam,Underdose,UDRS,EXQ2,,,,,,,B20 SI PCB
+125,Beam,Underdose in Electrons,UDRS,,,,,,,,AFC Control PCB
+126,Beam,Underdose in 6MV,UDRS,UDRS1,UDRS2,,,,,,Thyratron Grid Control PCB
+127,Beam,Underdose in 6MV,UDRS,UDRS1,UDRS2,,,,,,Fault Conditioning PCB
+128,Beam,Underdose on EDW,UDRS,,,,,,,,Beam Steering
+129,Beam,Underdose,UDRS,,,,,,,,PWM PCB
+130,Beam,Underdose,UDRS,,,,,,,,Thyratron Grid Control PCB
+131,Beam,Underdose,UDRS,,,,,,,,Phase Shifter
+132,Beam,UDRS with IMRT and Gantry rotation,UDRS,,,,,,,,W30
+133,Beam,UDRS with IMRT and Gantry rotation,UDRS,,,,,,,,AFC Coaxial Cables
+134,Beam,Underdose,UDRS,UDRS1,UDRS2,,,,,,Tuned Machine
+135,Beam,Underdose,UDRS,,,,,,,,Cold Deck BP
+136,Beam,Underdose in 6MV when rotating gantry,UDRS,,,,,,,,W88
+137,Beam,Underdose in 6MV when rotating gantry,UDRS,,,,,,,,W13
+138,Beam,Underdose in 6MV when rotating gantry,UDRS,,,,,,,,W15
+139,Beam,Underdose in 6MV when rotating gantry,UDRS,,,,,,,,W57
+140,Beam,Underdose in 6MV when rotating gantry,UDRS,,,,,,,,Cold Deck BP
+141,Beam,Underdose,UDRS,,,,,,,,W30
+142,Beam,Underdose,UDRS,EXQ2,,,,,,,Ion chamber cable
+143,Beam,Underdose,UDRS,,,,,,,,Gun
+144,Beam,Underdose,UDRS,,,,,,,,Gantry Patch Panel
+145,Beam,Underdose,UDRS,,,,,,,,W15
+146,Beam,Underdose,UDRS,,,,,,,,PWM PCB
+147,Beam,Underdose,UDRS,GFIL,,,,,,,HVPS
+148,Beam,Underdose in Photons,UDRS,,,,,,,,3 in 1 Power Supply
+149,Beam,Underdose,UDRS,,,,,,,,RF Driver
+150,Beam,Underdose,UDRS,UDRS1,UDRS2,,,,,,Tuned Machine
+151,Beam,Underdose when gantry 180 degrees,UDRS,UDRS1,UDRS2,,,,,,Gantry Wind Up Bundle
+152,Beam,Underdose in 6MV,UDRS,,,,,,,,Thyratron
+153,Beam,Underdose,UDRS,UDRS1,UDRS2,,,,,,AFC Control PCB
+154,Beam,Underdose,UDRS,,,,,,,,Tuned Machine
+155,Beam,Underdose,UDRS,,,,,,,,Beam Hold Interface PCB
+156,Beam,Underdose in Photons,UDRS,,,,,,,,W15
+157,Beam,Underdose in Photons,UDRS,,,,,,,,Gantry Patch Panel
+158,Water,Continuous flow fault,FLOW,,,,,,,,Flow Restrictor
+159,Water,Continuous flow fault,FLOW,,,,,,,,Flow Switch
+160,Water,FLOW interlock,FLOW,,,,,,,,Cleaned Flow Switch
+161,Water,FLOW interlock,FLOW,,,,,,,,STB-WA-515
+162,Water,FLOW interlock,FLOW,,,,,,,,Cleaned Flow Switch
+163,Water,FLOW interlock,FLOW,PUMP,,,,,,,Cleaned Filter
+164,Water,FLOW interlock,FLOW,PUMP,KFIL,,,,,,Chiller
+165,Water,Intermittent FLOW faults,FLOW,,,,,,,,W32
+166,Water,FLOW interlock,FLOW,,,,,,,,W32
+167,Water,Intermittent FLOW faults,FLOW,,,,,,,,Flow Restrictor
+168,Water,FLOW interlock,FLOW,,,,,,,,Flow Transducer
+169,Water,FLOW interlock,FLOW,,,,,,,,Filled Oil
+170,Beam,BMAG interlock when rotating,BMAG,,,,,,,,Repair BMAG cable insulation
+171,Beam,BMAG interlock,BMAG,,,,,,,,Adjusted BMAG voltage
+172,Beam,BMAG interlock,BMAG,,,,,,,,Adjusted BMAG voltage
+173,Beam,BMAG and HVCB interlocks,BMAG,HVCB,,,,,,,BMAG Power Supply
+174,Beam,BMAG interlock when rotating,BMAG,,,,,,,,W49
+175,Beam,BMAG interlock,BMAG,,,,,,,,BMAG Power Supply
+176,Beam,BMAG interlock,BMAG,,,,,,,,Input IF 2 PCB
+177,Beam,BMAG interlock,BMAG,,,,,,,,CDRIO PCB
+178,Beam,BMAG and UDRS interlocks,BMAG,UDRS,,,,,,,PFN Servo PCB
+179,Beam,BMAG interlock,BMAG,,,,,,,,Three Way Valve Actuator

@@ -35,7 +35,7 @@ clf = Pipeline([
 
 # train model
 clf.fit(X_train, y_train)
-
+pickle.dump(clf,'dummy.path')
 # prediction
 y_pred = clf.predict(X_test)
 

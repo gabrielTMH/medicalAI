@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
+from sklearn.model_selection import train_test_split # Import train_test_split function
+from sklearn import metrics
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 # configure Flask app
 app = Flask(__name__)
@@ -98,6 +102,22 @@ def update(id):
 
     else:
         return render_template('update.html', request=request)
+
+def top_predictions(model, input, num_of_examples):
+  predictions = model.predict_proba([input_example])[0]
+  top_indices = predicted_probabilities.argsort()[::-1][:num_of_examples]
+  for i in top_indices:
+    print("Class:", model.classes_[i], "- Probability:", predicted_probabilities[i])
+
+
+def encode_user_input(vectorizer,raw_text):
+    combined_text=combine_raw_text(raw_text)
+    return vectorizer.transform(combined_text)
+
+
+
+
+
 
 
 # debugger mode

@@ -18,6 +18,7 @@
     <th>Interlock 1</th>
     <th>Interlock 2</th>
     <th>Interlock 3</th>
+    <th>Other Codes</th>
     <th>Request Date</th>
     <th>Actions</th>
     </tr>
@@ -32,6 +33,7 @@
     <td>{{ request.interlock1 }}</td>
     <td>{{ request.interlock2 }}</td>
     <td>{{ request.interlock3 }}</td>
+    <td>{{ request.other_codes }}</td>
     <td>{{ request.date_created.date() }}</td>
     <td>
         <a href="/delete/{{ request.id }}">Delete</a>
@@ -61,6 +63,8 @@
     <input type="text" name="interlock2" id="interlock2">
     <label for="interlock3">Interlock 3:</label>
     <input type="text" name="interlock3" id="interlock3">
+    <label for="other_codes">Other Codes</label>
+    <input type="text" name="other_codes" id="other_codes">
     <input type="submit" value="Add Request">
 </form>
 </div>

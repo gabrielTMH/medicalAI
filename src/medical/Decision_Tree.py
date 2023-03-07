@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
+
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import classification_report
@@ -11,6 +12,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 def prep_data(data):
     return data['issue'].fillna(0), data['resolution']
+
 
 
 def vectorize_data(vectorizer, issues, resolutions):

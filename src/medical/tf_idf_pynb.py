@@ -5,6 +5,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import classification_report
 
+
 v = TfidfVectorizer()
 df = pd.read_csv("../../../../Desktop/reorganized.csv")
 

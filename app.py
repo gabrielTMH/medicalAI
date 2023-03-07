@@ -119,7 +119,7 @@ def encode_user_input(vectorizer,raw_text):
     return vectorizer.transform(combined_text)
 
 def unpickle_and_split_pipeline(picklepath):
-    pipe = joblib.load(picklepath)
+    pipe = pickle.load(picklepath)
     classifier = pipe['classifier']
     vectorizer = pipe['vectoizer']
     return classifier,vectorizer

@@ -1,3 +1,4 @@
+import pickle
 import pandas as pd
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
@@ -8,16 +9,8 @@ from sklearn.metrics import classification_report
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 
-def Decision_Tree(input_data):
-    issues, resolutions = prep_data(input_data)
-    vectorized_issues, vectorized_resolutions = vectorize_data(one_hot_vectorizer, issues, resolutions)
-    issues_train, issues_test, resolutions_train, resolutions_test = \
-        train_test_split(vectorized_issues, vectorized_resolutions, test_size=0.3, random_state=1)
-    predict_response(issues_train, issues_test, resolutions_train, resolutions_test)
-
-
-def prep_data(input_data):
-    return input_data['issue'].fillna(0), input_data['resolution']
+def prep_data(data):
+    return data['issue'].fillna(0), data['resolution']
 
 
 def vectorize_data(vectorizer, issues, resolutions):
@@ -35,12 +28,11 @@ def one_hot_classifier():
     return DecisionTreeClassifier()
 
 
-def tfidf_classifier():
-    classifier = Pipeline([
+def tfidf_pipeline():
+    return Pipeline([
         ('vectorizer_tfidf', TfidfVectorizer()),
         ('KNN', KNeighborsClassifier())
     ])
-    return classifier
 
 
 def one_hot_print_results(resolutions_test, prediction):
@@ -67,3 +59,24 @@ def tfidf_vectorizer(data, issues, resolutions):
         else:
             data.loc[row_num, 'resolution_num'] = has_seen[resolution]
         row_num += 1
+
+
+class DecisionTree:
+    data = pd.read_csv("../../../../Desktop/reorganized.csv")
+    issues, resolutions = prep_data(data)
+    vectorized_issues, vectorized_resolutions = vectorize_data(tfidf_vectorizer(), issues, resolutions)
+    issues_train, issues_test, resolutions_train, resolutions_test = \
+        train_test_split(vectorized_issues, vectorized_resolutions, test_size=0.3, random_state=1)
+    predict_response(issues_train, issues_test, resolutions_train,
+                     resolutions_test, tfidf_pipeline(), tfidf_print_results())
+
+
+data = pd.read_csv("../../../../Desktop/reorganized.csv") # whatever our data thing is
+issues, resolutions = prep_data(data)
+vectorized_issues, vectorized_resolutions = vectorize_data(tfidf_vectorizer(), issues, resolutions)
+issues_train, issues_test, resolutions_train, resolutions_test = \
+    train_test_split(vectorized_issues, vectorized_resolutions, test_size=0.3, random_state=1)
+pipeline = tfidf_pipeline()
+pipeline.fit(issues_train, resolutions_train)
+pickle.dump(pipeline, open('pipeline.pkl', 'wb'))
+pickled_pipeline = pickle.load('pipeline.pkl', 'rb')

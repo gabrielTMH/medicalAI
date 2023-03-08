@@ -73,7 +73,7 @@ class DecisionTree:
                      resolutions_test, tfidf_pipeline(), tfidf_print_results())
 
 
-data = pd.read_csv("../../../../Desktop/reorganized.csv") # whatever our data thing is
+data = pd.read_csv("data/reorganized.csv") # whatever our data thing is
 issues, resolutions = prep_data(data)
 vectorized_issues, vectorized_resolutions = vectorize_data(tfidf_vectorizer(), issues, resolutions)
 issues_train, issues_test, resolutions_train, resolutions_test = \

@@ -1,12 +1,11 @@
 import csv
 import unittest
-from src.medical import *
-from src.medical.tfidf import clean_data
-from data import Medical_Error_Test_Data
+from src import clean_data
+
 
 class treeTest(unittest.TestCase):
     def accurate_clean(self):
-        with open('Medical_Error_Test_Data.csv') as csvfile:
+        with open('reorganized.csv') as csvfile:
             readCSV = list(csv.reader(csvfile, delimiter=','))
             test_row = readCSV[43]
         test_row = clean_data(test_row)

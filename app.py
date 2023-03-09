@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import pickle
 from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
 from sklearn.model_selection import train_test_split # Import train_test_split function
 from sklearn import metrics
 from sklearn.feature_extraction.text import TfidfVectorizer
-import joblib
+
 
 
 # configure Flask app
@@ -17,9 +18,9 @@ db = SQLAlchemy(app)
 def create_tables():
     db.create_all()
 
-# with app.app_context():
-#     # create the tables
-#     db.create_all()
+with app.app_context():
+    # create the tables
+    db.create_all()
 
 
 class UserRequest(db.Model):
@@ -59,9 +60,12 @@ def index():
         other_codes = request.form['other_codes']
 
         #create "issue" for model
+        complete_issue_list = [subsystem,problem,error_code1,error_code2,error_code3,interlock1,interlock2,interlock3,other_codes]
         complete_issue = f'{subsystem}{problem}{error_code1}{error_code2}{error_code3}{interlock1}{interlock2}' \
                          f'{interlock3}{other_codes}'
-        print(complete_issue)
+        model,vectorizer=unpickle_and_split_pipeline()
+        result= input_to_result(complete_issue_list,model,vectorizer)
+
 
         new_request = UserRequest(subsystem=subsystem, problem=problem, error_code1=error_code1,
                                   error_code2=error_code2, error_code3=error_code3,
@@ -121,17 +125,31 @@ def top_predictions(model, input, num_of_resolutions):
   return answers
 
 
+def combine_raw_text(text):
+    result=''
+    for i in range(len(text)):
+        if text[i] in (None, ""):
+            text[i]='-'
+        elif text[i-1] == '-':
+            result+=' ' + text[i]
+        result += text[i]
+    return result
+
 def encode_user_input(vectorizer,raw_text):
     combined_text=combine_raw_text(raw_text)
     return vectorizer.transform(combined_text)
 
-def unpickle_and_split_pipeline(picklepath):
+def unpickle_and_split_pipeline(picklepath='pipeline.pkl'):
     pipe = pickle.load(picklepath)
     classifier = pipe['classifier']
     vectorizer = pipe['vectoizer']
     return classifier,vectorizer
 
-
+def input_to_result(list, classifier, vectorizer):
+    text_to_vectorize= combine_raw_text(list)
+    vectorized_text= vectorizer.transfrom( text_to_vectorize)
+    predictions=top_predictions(classifier,vectorized_text,3)
+    return predictions
 
 
 # debugger mode

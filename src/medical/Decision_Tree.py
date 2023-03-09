@@ -63,7 +63,7 @@ def tfidf_DF_pipeline():
 def tfidf_MLP_pipeline():
     return Pipeline([
         ('vectorizer_tfidf', TfidfVectorizer()),
-        ('random_forest', MLPClassifier(hidden_layer_sizes=(500,), max_iter=1000, random_state=42))
+        ('MLP', MLPClassifier(hidden_layer_sizes=(500,), max_iter=1000, random_state=42))
     ])
 
 def tfidf_MNB_pipeline():
@@ -124,13 +124,14 @@ def train_and_pickle_pipeline(filename="reorganized.csv", pipeline=tfidf_KNN_pip
     pickle.dump(pipeline, open(path, 'wb'))
 
 
-pipe = tfidf_DF_pipeline()
-x_data,y_data = prep_data("reorganized.csv")
-shuffle(x_data, y_data, random_state=0)
-x_train, x_test, y_train, y_test = train_test_split(x_data,y_data, test_size=0.4, random_state=1)
-pipe.fit(x_train, y_train)
-y_pred = pipe.predict(x_test)
-bal_accuracy = balanced_accuracy_score(y_test, y_pred)
-accuracy = accuracy_score(y_test, y_pred)
-print(accuracy)
-print(bal_accuracy)
+# pipe = tfidf_DF_pipeline()
+# x_data,y_data = prep_data("reorganized.csv")
+# shuffle(x_data, y_data, random_state=0)
+# x_train, x_test, y_train, y_test = train_test_split(x_data,y_data, test_size=0.4, random_state=1)
+# pipe.fit(x_train, y_train)
+# y_pred = pipe.predict(x_test)
+# bal_accuracy = balanced_accuracy_score(y_test, y_pred)
+# accuracy = accuracy_score(y_test, y_pred)
+# print(accuracy)
+# print(bal_accuracy)
+train_and_pickle_pipeline(pipeline=tfidf_DF_pipeline())

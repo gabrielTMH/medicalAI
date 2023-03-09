@@ -21,7 +21,7 @@ def combine_features_from_data(inputFile='example1.csv', outputFile='exmple2.csv
     with open(outputFile, 'w') as outputData:
         with open(inputFile) as inputData:
             outputData.write('issue' + ',')
-            outputData.write('label' + '\n')
+            outputData.write('resolution' + '\n')
             inputReader = csv.reader(inputData)
             next(inputReader, None)
             for row in inputReader:

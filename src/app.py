@@ -42,7 +42,9 @@ class UserRequest(db.Model):
     def __repr__(self):
         return '<UserRequest %r>' % self.id
 
-
+def table():
+    return render_template('result'
+                           'table.html')
 # index
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -151,6 +153,9 @@ def input_to_result(list, classifier, vectorizer):
     vectorized_text= vectorizer.transform([text_to_vectorize])
     predictions=top_predictions(classifier,vectorized_text,3)
     return predictions
+
+
+
 
 
 # debugger mode

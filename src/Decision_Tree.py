@@ -18,31 +18,14 @@ def prep_data(filename):
     data = pd.read_csv(filename)
     return data['issue'].fillna(0), data['resolution']
 
-
 def vectorize_data(vectorizer, issues, resolutions):
-    #so I think a problem with this function is that most vectorizers need to be fit on the data and
-    #if we wanted the data we are passing in to be vectorized it would be with a transform method
-    return vectorizer(issues, resolutions)
-
+    return vectorizer.fit_transform(issues), vectorizer.fit_transform(resolutions)
 
 def one_hot_vectorizer(issues, resolutions):
     return pd.get_dummies(issues), pd.get_dummies(resolutions)
 
-
-def tfidf_vectorizer(data, issues, resolutions):
-    #as much as I appreciate this method I think we use it in the pipeline
-    has_seen = {}
-    count = 0
-    row_num = 0
-    for resolution in resolutions:
-        if str(resolution) not in has_seen:
-            data.loc[row_num, 'resolution_num'] = count
-            has_seen[resolution] = count
-            count += 1
-        else:
-            data.loc[row_num, 'resolution_num'] = has_seen[resolution]
-        row_num += 1
-
+def tfidf_vectorizer():
+    return TfidfVectorizer()
 
 def predict_response(issues_train, issues_test, resolutions_train, resolutions_test, classifier, print_results):
     classifier = classifier()
@@ -50,9 +33,7 @@ def predict_response(issues_train, issues_test, resolutions_train, resolutions_t
     prediction = fitted_classifier.predict(issues_test)
     print_results(resolutions_test, prediction)
 
-
 def one_hot_classifier():
-    #not sure why we have this class also its call one-hot but its just returning a decision tree
     return DecisionTreeClassifier()
 
 def tfidf_DF_pipeline():
@@ -79,13 +60,12 @@ def tfidf_KNN_pipeline():
         ('KNN', KNeighborsClassifier())
     ])
 
-
 def one_hot_print_results(resolutions_test, prediction):
     print("Accuracy: ", metrics.accuracy_score(resolutions_test, prediction))
 
-
 def tfidf_print_results(resolutions_test, prediction):
     print(classification_report(resolutions_test, prediction))
+
 
 
 
@@ -120,18 +100,13 @@ def tfidf_print_results(resolutions_test, prediction):
 def train_and_pickle_pipeline(filename="reorganized.csv", pipeline=tfidf_KNN_pipeline(), path='pipeline.pkl'):
     issues, resolutions = prep_data(filename)
     x_train, x_test, y_train, y_test = train_test_split(issues,resolutions, test_size=0.3, random_state=1)
+
     pipeline.fit(x_train, y_train)
     pickle.dump(pipeline, open(path, 'wb'))
 
-
-# pipe = tfidf_DF_pipeline()
-# x_data,y_data = prep_data("reorganized.csv")
-# shuffle(x_data, y_data, random_state=0)
-# x_train, x_test, y_train, y_test = train_test_split(x_data,y_data, test_size=0.4, random_state=1)
-# pipe.fit(x_train, y_train)
-# y_pred = pipe.predict(x_test)
-# bal_accuracy = balanced_accuracy_score(y_test, y_pred)
-# accuracy = accuracy_score(y_test, y_pred)
-# print(accuracy)
-# print(bal_accuracy)
-train_and_pickle_pipeline(pipeline=tfidf_DF_pipeline())
+# Example usage:
+if __name__ == '__main__':
+    file_path = "/Users/cristianpanaro/PycharmProjects/sofdev-s23-medical/data/TestDataUpdated.csv"
+    pipeline = tfidf_KNN_pipeline()
+    pipeline_path = 'pipeline.pkl'
+    train_and_pickle_pipeline(file_path, pipeline, pipeline_path)

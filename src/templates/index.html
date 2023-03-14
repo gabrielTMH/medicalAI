@@ -20,6 +20,7 @@
     <th>Interlock 3</th>
     <th>Other Codes</th>
     <th>Request Date</th>
+    <th>Result</th>
     <th>Actions</th>
     </tr>
 
@@ -34,6 +35,7 @@
     <td>{{ request.interlock2 }}</td>
     <td>{{ request.interlock3 }}</td>
     <td>{{ request.other_codes }}</td>
+    <td>{{ request.result }}</td>
     <td>{{ request.date_created.date() }}</td>
     <td>
         <a href="/delete/{{ request.id }}">Delete</a>

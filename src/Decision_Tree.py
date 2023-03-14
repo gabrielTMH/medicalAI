@@ -14,6 +14,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
 def prep_data(filename):
+
     data = pd.read_csv(filename)
     return data['issue'].fillna(0), data['resolution']
 
@@ -117,8 +118,7 @@ def tfidf_print_results(resolutions_test, prediction):
 
 
 def train_and_pickle_pipeline(filename="reorganized.csv", pipeline=tfidf_KNN_pipeline(), path='pipeline.pkl'):
-    fileData = pd.read_csv(filename)
-    issues, resolutions = prep_data(fileData)
+    issues, resolutions = prep_data(filename)
     x_train, x_test, y_train, y_test = train_test_split(issues,resolutions, test_size=0.3, random_state=1)
     pipeline.fit(x_train, y_train)
     pickle.dump(pipeline, open(path, 'wb'))

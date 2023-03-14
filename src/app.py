@@ -1,22 +1,24 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask import jsonify
+
 import pickle
-from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
-from sklearn.model_selection import train_test_split # Import train_test_split function
+from sklearn.tree import DecisionTreeClassifier  # Import Decision Tree Classifier
+from sklearn.model_selection import train_test_split  # Import train_test_split function
 from sklearn import metrics
 from sklearn.feature_extraction.text import TfidfVectorizer
-
-
 
 # configure Flask app
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///model.db'
 db = SQLAlchemy(app)
 
+
 @app.before_first_request
 def create_tables():
     db.create_all()
+
 
 with app.app_context():
     # create the tables
@@ -36,6 +38,7 @@ class UserRequest(db.Model):
     interlock3 = db.Column(db.String(200), nullable=False)
 
     other_codes = db.Column(db.String(200), nullable=False)
+    result = db.Column(db.String(200), nullable=False)
 
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -61,19 +64,22 @@ def index():
 
         other_codes = request.form['other_codes']
 
-        #create "issue" for model
-        complete_issue_list = [subsystem,problem,error_code1,error_code2,error_code3,interlock1,interlock2,interlock3,other_codes]
+        # create "issue" for model
+        complete_issue_list = [subsystem, problem, error_code1, error_code2, error_code3, interlock1, interlock2,
+                               interlock3, other_codes]
         complete_issue = f'{subsystem}{problem}{error_code1}{error_code2}{error_code3}{interlock1}{interlock2}' \
                          f'{interlock3}{other_codes}'
+
         model,vectorizer=unpickle_and_split_pipeline()
         result= input_to_result(complete_issue_list,model,vectorizer)
         for i in result:
             print(i)
 
+
         new_request = UserRequest(subsystem=subsystem, problem=problem, error_code1=error_code1,
                                   error_code2=error_code2, error_code3=error_code3,
                                   interlock1=interlock1, interlock2=interlock2,
-                                  interlock3=interlock3, other_codes=other_codes
+                                  interlock3=interlock3, other_codes=other_codes, result=result
                                   )
 
         try:
@@ -85,7 +91,9 @@ def index():
 
     else:
         requests = UserRequest.query.order_by(UserRequest.date_created).all()
-        return render_template('index.html', requests=requests)
+        languages = ["C++", "Python", "PHP", "Java", "C", "Ruby",
+                     "R", "C#", "Dart", "Fortran", "Pascal", "Javascript"]
+        return render_template('index.html', requests=requests, languages=languages)
 
 
 # delete
@@ -118,6 +126,7 @@ def update(id):
 
     else:
         return render_template('update.html', request=request)
+
 
 def top_predictions(model, input, num_of_resolutions):
   predictions = model.predict_proba(input)[0]
@@ -153,6 +162,7 @@ def input_to_result(list, classifier, vectorizer):
     vectorized_text= vectorizer.transform([text_to_vectorize])
     predictions=top_predictions(classifier,vectorized_text,3)
     return predictions
+
 
 
 

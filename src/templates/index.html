@@ -19,6 +19,7 @@
     <th>Interlock 2</th>
     <th>Interlock 3</th>
     <th>Other Codes</th>
+    <th>Result</th>
     <th>Request Date</th>
     <th>Actions</th>
     </tr>
@@ -34,6 +35,7 @@
     <td>{{ request.interlock2 }}</td>
     <td>{{ request.interlock3 }}</td>
     <td>{{ request.other_codes }}</td>
+    <td>{{ request.result }}</td>
     <td>{{ request.date_created.date() }}</td>
     <td>
         <a href="/delete/{{ request.id }}">Delete</a>
@@ -51,22 +53,90 @@
     <label for="problem">Problem:</label>
     <input type="text" name="problem" id="problem">
      <label for="error_code1">Error Code 1:</label>
-    <input type="text" name="error_code1" id="error_code1">
+    <input type="text" name="error_code1" id="error_code1" class="error_code">
     <label for="error_code2">Error Code 2:</label>
-    <input type="text" name="error_code2" id="error_code2">
+    <input type="text" name="error_code2" id="error_code2" class="error_code">
     <label for="error_code3">Error Code 3:</label>
-    <input type="text" name="error_code3" id="error_code3">
+    <input type="text" name="error_code3" id="error_code3" class="error_code">
 
     <label for="interlock1">Interlock 1:</label>
-    <input type="text" name="interlock1" id="interlock1">
+    <input type="text" name="interlock1" id="interlock1" class="interlock">
     <label for="interlock2">Interlock 2:</label>
-    <input type="text" name="interlock2" id="interlock2">
+    <input type="text" name="interlock2" id="interlock2" class="interlock">
     <label for="interlock3">Interlock 3:</label>
-    <input type="text" name="interlock3" id="interlock3">
+    <input type="text" name="interlock3" id="interlock3" class="interlock">
     <label for="other_codes">Other Codes</label>
     <input type="text" name="other_codes" id="other_codes">
     <input type="submit" value="Add Request">
 </form>
+<!--    add styling later-->
+<!--    <style>-->
+<!--        .ui-autocomplete {-->
+<!--  position: absolute;-->
+<!--  z-index: 9999;-->
+<!--  cursor: default;-->
+<!--  background-color: #ffffff;-->
+<!--  border: 1px solid #ccc;-->
+<!--  max-height: 200px;-->
+<!--  overflow-y: auto;-->
+<!--}-->
+
+<!--.ui-autocomplete li {-->
+<!--  list-style: none;-->
+<!--  padding: 5px 10px;-->
+<!--}-->
+
+<!--.ui-autocomplete li:hover {-->
+<!--  background-color: #f5f5f5;-->
+<!--}-->
+
+<!--.ui-autocomplete li.ui-state-active {-->
+<!--  background-color: #3399ff;-->
+<!--  color: #ffffff;-->
+<!--}-->
+<!--    </style>-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+    $( function() {
+    var subsystemTags = ["Beam","MLS","Water"];
+    $( "#subsystem" ).autocomplete({
+      source: subsystemTags
+    });
+    } );
+
+    $( function() {
+    var problemTags = ["BGM Fault", "BMAG and HVCB interlocks", "BMAG and UDRS interlocks" ,
+    "BMAG interlock", "Continuous flow fault", "FLOW interlock", "GFIL and HVCB Faults",
+    "Intermittent FLOW faults", "MLC Initialization Error", "MLC Interlock", "MLC Leaf Error",
+    "MLC Leaf Stall", "MLC Leaf Stopping Intermittently", "MLC losing connection, treatment invalid",
+    "MLC Secondary Feedback Error", "MLC stuck leaf", "MLC Stuck Open", "MLC Won't go to plan, Leaf Failure",
+    "MLC, COL error", "Output too high.", "UDRS and HWFA faults", "UDRS with IMRT and Gantry rotation", "Underdose",
+    "Underdose all energies", "Underdose in 15MV in morning", "Underdose in 6MV", "Underdose in 8MV", "Underdose in 9e",
+    "Underdose in Electrons", "Underdose in morning", "Underdose in Photons", "Underdose on EDW" ,
+    "Underdose when gantry 180 degrees", "Underdose when rotating gantry", "Yield monitor error"];
+    $( "#problem" ).autocomplete({
+      source: problemTags
+    });
+    } );
+
+    $( function() {
+    var interlockTags = ["BGM","BMAG","COL","EXQ2","FLOW","GFIL","HVCB","HWFA","INIT","KFIL","MLC","PUMP",
+                        "SFB","UDRS","UDRS1","UDRS2","VAC2","YIELD"];
+    $( ".interlock" ).autocomplete({
+      source: interlockTags
+    });
+    } );
+
+    $( function() {
+    var error_codeTags = ["210005","AD Overcurrent","EE ROM","FIL","HD AD+","HD TEMP","HV OFF","HVPS+","Leaf Stall"];
+    $( ".error_code" ).autocomplete({
+      source: error_codeTags
+    });
+    } );
+  </script>
 </div>
 
 

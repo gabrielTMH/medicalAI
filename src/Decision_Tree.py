@@ -57,8 +57,8 @@ def one_hot_classifier():
 
 def tfidf_DF_pipeline():
     return Pipeline([
-        ('vectorizer_tfidf', TfidfVectorizer()),
-        ('random_forest', RandomForestClassifier())
+        ('vectorizer', TfidfVectorizer()),
+        ('random_forest_classifier', RandomForestClassifier())
     ])
 
 def tfidf_MLP_pipeline():

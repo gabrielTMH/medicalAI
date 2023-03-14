@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask import jsonify
+
 import pickle
 from sklearn.tree import DecisionTreeClassifier  # Import Decision Tree Classifier
 from sklearn.model_selection import train_test_split  # Import train_test_split function
@@ -65,8 +67,8 @@ def index():
                                interlock3, other_codes]
         complete_issue = f'{subsystem}{problem}{error_code1}{error_code2}{error_code3}{interlock1}{interlock2}' \
                          f'{interlock3}{other_codes}'
-        model, vectorizer = unpickle_and_split_pipeline()
-        result = input_to_result(complete_issue_list, model, vectorizer)
+        # model, vectorizer = unpickle_and_split_pipeline()
+        # result = input_to_result(complete_issue_list, model, vectorizer)
         result = str(10)
 
         new_request = UserRequest(subsystem=subsystem, problem=problem, error_code1=error_code1,
@@ -84,7 +86,9 @@ def index():
 
     else:
         requests = UserRequest.query.order_by(UserRequest.date_created).all()
-        return render_template('index.html', requests=requests)
+        languages = ["C++", "Python", "PHP", "Java", "C", "Ruby",
+                     "R", "C#", "Dart", "Fortran", "Pascal", "Javascript"]
+        return render_template('index.html', requests=requests, languages=languages)
 
 
 # delete
@@ -119,43 +123,43 @@ def update(id):
         return render_template('update.html', request=request)
 
 
-def top_predictions(model, input, num_of_resolutions):
-    predictions = model.predict_proba([input])[0]
-    top_indices = predictions.argsort()[::-1][:num_of_resolutions]
-    answers = []
-    for i in top_indices: # mightbe method is not iterabLE
-        answers.append("Class:", model.classes_[i], "- Probability:", predictions[i])
-    return answers
-
-
-def combine_raw_text(text):
-    result = ''
-    for i in range(len(text)):
-        if text[i] in (None, ""):
-            text[i] = '-'
-        elif text[i - 1] == '-':
-            result += ' ' + text[i]
-        result += text[i]
-    return result
-
-
-def encode_user_input(vectorizer, raw_text):
-    combined_text = combine_raw_text(raw_text)
-    return vectorizer.transform(combined_text)
-
-
-def unpickle_and_split_pipeline(picklepath='pipeline.pkl'):
-    pipe = pickle.load(open(picklepath,'rb'))
-    classifier = pipe['classifier']
-    vectorizer = pipe['vectorizer']
-    return classifier, vectorizer
-
-
-def input_to_result(list, classifier, vectorizer):
-    text_to_vectorize = combine_raw_text(list)
-    vectorized_text = vectorizer.transfrom(text_to_vectorize)
-    predictions = top_predictions(classifier, vectorized_text, 3)
-    return predictions
+# def top_predictions(model, input, num_of_resolutions):
+#     predictions = model.predict_proba([input])[0]
+#     top_indices = predictions.argsort()[::-1][:num_of_resolutions]
+#     answers = []
+#     for i in top_indices: # mightbe method is not iterabLE
+#         answers.append("Class:", model.classes_[i], "- Probability:", predictions[i])
+#     return answers
+#
+#
+# def combine_raw_text(text):
+#     result = ''
+#     for i in range(len(text)):
+#         if text[i] in (None, ""):
+#             text[i] = '-'
+#         elif text[i - 1] == '-':
+#             result += ' ' + text[i]
+#         result += text[i]
+#     return result
+#
+#
+# def encode_user_input(vectorizer, raw_text):
+#     combined_text = combine_raw_text(raw_text)
+#     return vectorizer.transform(combined_text)
+#
+#
+# def unpickle_and_split_pipeline(picklepath='pipeline.pkl'):
+#     pipe = pickle.load(open(picklepath,'rb'))
+#     classifier = pipe['classifier']
+#     vectorizer = pipe['vectorizer']
+#     return classifier, vectorizer
+#
+#
+# def input_to_result(list, classifier, vectorizer):
+#     text_to_vectorize = combine_raw_text(list)
+#     vectorized_text = vectorizer.transfrom(text_to_vectorize)
+#     predictions = top_predictions(classifier, vectorized_text, 3)
+#     return predictions
 
 
 # debugger mode

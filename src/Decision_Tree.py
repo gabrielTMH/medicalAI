@@ -14,6 +14,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
 def prep_data(filename):
+
     data = pd.read_csv(filename)
     return data['issue'].fillna(0), data['resolution']
 
@@ -37,8 +38,8 @@ def one_hot_classifier():
 
 def tfidf_DF_pipeline():
     return Pipeline([
-        ('vectorizer_tfidf', TfidfVectorizer()),
-        ('random_forest', RandomForestClassifier())
+        ('vectorizer', TfidfVectorizer()),
+        ('random_forest_classifier', RandomForestClassifier())
     ])
 
 def tfidf_MLP_pipeline():
@@ -65,10 +66,41 @@ def one_hot_print_results(resolutions_test, prediction):
 def tfidf_print_results(resolutions_test, prediction):
     print(classification_report(resolutions_test, prediction))
 
-def train_and_pickle_pipeline(filename, pipeline, path):
-    file_data = pd.read_csv(filename)
-    issues, resolutions = prep_data(file_data)
-    x_train, x_test, y_train, y_test = train_test_split(issues, resolutions, test_size=0.3, random_state=1)
+
+
+
+
+
+# class DecisionTree:
+#     #I think there is an argument to made about how issues and resolutions is kinda long and could be replaced with x and y
+#     #data = pd.read_csv("reorganized.csv") put this line in prep_data
+#     issues, resolutions = prep_data("reorganized.csv")
+#     vectorized_issues, vectorized_resolutions = vectorize_data(tfidf_vectorizer(), issues, resolutions) #this line needs reworking
+#     issues_train, issues_test, resolutions_train, resolutions_test = \
+#         train_test_split(vectorized_issues, vectorized_resolutions, test_size=0.3, random_state=1)
+#     predict_response(issues_train, issues_test, resolutions_train,
+#                      resolutions_test, tfidf_KNN_pipeline(), tfidf_print_results())
+
+
+
+
+
+# data = pd.read_csv("reorganized.csv") # whatever our data thing is
+# issues, resolutions = prep_data("reorganized.csv")
+# vectorized_issues, vectorized_resolutions = vectorize_data(tfidf_vectorizer(), issues, resolutions) #this is not the line to use
+# print(vectorized_issues)
+# issues_train, issues_test, resolutions_train, resolutions_test = \
+#     train_test_split(vectorized_issues, vectorized_resolutions, test_size=0.3, random_state=1)
+# pipeline = tfidf_KNN_pipeline()
+# pipeline.fit(issues_train, resolutions_train)
+# pickle.dump(pipeline, open('pipeline.pkl', 'wb'))
+# pickled_pipeline = pickle.load('pipeline.pkl', 'rb')
+
+
+def train_and_pickle_pipeline(filename="reorganized.csv", pipeline=tfidf_KNN_pipeline(), path='pipeline.pkl'):
+    issues, resolutions = prep_data(filename)
+    x_train, x_test, y_train, y_test = train_test_split(issues,resolutions, test_size=0.3, random_state=1)
+
     pipeline.fit(x_train, y_train)
     pickle.dump(pipeline, open(path, 'wb'))
 

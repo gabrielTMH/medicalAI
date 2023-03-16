@@ -7,9 +7,9 @@
 {% block body %}
 
 <div class ="content">
-    <h1 style="text-align: center">Customize UserRequest</h1>
+    <h1 style="text-align: center">Customize User Request</h1>
 </div>
-
+<div>
     <form action="/update/{{user_request.id}}" method="POST">
     <label for="problem">Sub System:</label>
     <input type="text" name="subsystem" id="subsystem" value={{user_request.subsystem}}>
@@ -32,6 +32,48 @@
     <input type="text" name="other_codes" id="other_codes"  value={{user_request.other_codes}}>
     <input type="submit" value="Update Request">
 </form>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+    $( function() {
+    var subsystemTags = ["Beam","MLS","Water"];
+    $( "#subsystem" ).autocomplete({
+      source: subsystemTags
+    });
+    } );
+
+    $( function() {
+    var problemTags = ["BGM Fault", "BMAG and HVCB interlocks", "BMAG and UDRS interlocks" ,
+    "BMAG interlock", "Continuous flow fault", "FLOW interlock", "GFIL and HVCB Faults",
+    "Intermittent FLOW faults", "MLC Initialization Error", "MLC Interlock", "MLC Leaf Error",
+    "MLC Leaf Stall", "MLC Leaf Stopping Intermittently", "MLC losing connection, treatment invalid",
+    "MLC Secondary Feedback Error", "MLC stuck leaf", "MLC Stuck Open", "MLC Won't go to plan, Leaf Failure",
+    "MLC, COL error", "Output too high.", "UDRS and HWFA faults", "UDRS with IMRT and Gantry rotation", "Underdose",
+    "Underdose all energies", "Underdose in 15MV in morning", "Underdose in 6MV", "Underdose in 8MV", "Underdose in 9e",
+    "Underdose in Electrons", "Underdose in morning", "Underdose in Photons", "Underdose on EDW" ,
+    "Underdose when gantry 180 degrees", "Underdose when rotating gantry", "Yield monitor error"];
+    $( "#problem" ).autocomplete({
+      source: problemTags
+    });
+    } );
+
+    $( function() {
+    var interlockTags = ["BGM","BMAG","COL","EXQ2","FLOW","GFIL","HVCB","HWFA","INIT","KFIL","MLC","PUMP",
+                        "SFB","UDRS","UDRS1","UDRS2","VAC2","YIELD"];
+    $( ".interlock" ).autocomplete({
+      source: interlockTags
+    });
+    } );
+
+    $( function() {
+    var error_codeTags = ["210005","AD Overcurrent","EE ROM","FIL","HD AD+","HD TEMP","HV OFF","HVPS+","Leaf Stall"];
+    $( ".error_code" ).autocomplete({
+      source: error_codeTags
+    });
+    } );
+  </script>
 
 </div>
 {% endblock %}

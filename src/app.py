@@ -45,9 +45,7 @@ class UserRequest(db.Model):
     def __repr__(self):
         return '<UserRequest %r>' % self.id
 
-def table():
-    return render_template('result'
-                           'table.html')
+
 # index
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -72,6 +70,7 @@ def index():
 
         model,vectorizer=unpickle_and_split_pipeline()
         result= input_to_result(complete_issue_list,model,vectorizer)
+        result = str(result)
         for i in result:
             print(i)
 
@@ -91,9 +90,7 @@ def index():
 
     else:
         requests = UserRequest.query.order_by(UserRequest.date_created).all()
-        languages = ["C++", "Python", "PHP", "Java", "C", "Ruby",
-                     "R", "C#", "Dart", "Fortran", "Pascal", "Javascript"]
-        return render_template('index.html', requests=requests, languages=languages)
+        return render_template('index.html', requests=requests)
 
 
 # delete

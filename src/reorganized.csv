@@ -8,9 +8,9 @@ Underdose Beam UDRS -------,adjusted gun hv
 GFIL Interlock Beam GFIL -------,hot deck
 GFIL Interlock Beam GFIL -------,gun pulse driver
 GFIL Interlock Beam GFIL -------,filament ps
-GFIL Interlock Beam GFIL ---- HD_AD+ --,lv ps ps2
-GFIL Interlock Beam GFIL ---- HD_AD+ --,filament ps
-GFIL Interlock Beam GFIL ---- HD_AD+ --,gun pulse driver
+GFIL Interlock Beam GFIL ----HD_AD+ --,lv ps ps2
+GFIL Interlock Beam GFIL ----HD_AD+ --,filament ps
+GFIL Interlock Beam GFIL ----HD_AD+ --,gun pulse driver
 Underdose Beam UDRS1 UDRS2 ------,cold deck
 Underdose Beam UDRS1 UDRS2 ------,gantry patch panel
 Underdose Beam UDRS1 UDRS2 ------,cable
@@ -18,11 +18,11 @@ Underdose Beam UDRS1 UDRS2 ------,cable
 Underdose Beam UDRS1 UDRS2 ------,cable
 Underdose Beam UDRS1 UDRS2 ------,cable
 Underdose Beam UDRS1 UDRS2 ------,cable
-GFIL Interlock Beam GFIL ---- HVPS+ FIL -,filament ps
-GFIL Interlock Beam GFIL ---- HVPS+ FIL -,gun pulse driver
+GFIL Interlock Beam GFIL ----HVPS+ FIL -,filament ps
+GFIL Interlock Beam GFIL ----HVPS+ FIL -,gun pulse driver
 Yield monitor error Beam YIELD -------,target
-BGM Fault Beam BGM ---- 210005 --,AFC
-GFIL Interlock Beam GFIL ---- HD_AD+ --,hot deck
+BGM Fault Beam BGM ----210005 --,AFC
+GFIL Interlock Beam GFIL ----HD_AD+ --,hot deck
 GFIL Interlock Beam GFIL -------,gun pulse driver
 GFIL Interlock Beam GFIL -------,hot deck
 GFIL Interlock Beam GFIL -------,emergency off reset
@@ -31,21 +31,21 @@ GFIL Interlock Beam GFIL -------,adjusted gun hv
 GFIL Interlock Beam GFIL -------,emergency off reset
 GFIL Interlock Beam GFIL -------,filament ps
 GFIL Interlock Beam GFIL -------,gun pulse driver
-GFIL Interlock Beam GFIL ---- AD_Overcurrent --,hot deck
-GFIL Interlock Beam GFIL ---- AD_Overcurrent --,lv ps ps2
+GFIL Interlock Beam GFIL ----AD_Overcurrent --,hot deck
+GFIL Interlock Beam GFIL ----AD_Overcurrent --,lv ps ps2
 GFIL Interlock Beam GFIL -------,gun pulse driver
 GFIL Interlock Beam GFIL -------,filament ps
 GFIL Interlock Beam GFIL -------,filament ps
 GFIL Interlock Beam GFIL -------,gun pulse driver
-GFIL Interlock Beam GFIL ---- HD_AD+ HV_OFF EE_ROM ,hvps
-GFIL Interlock Beam GFIL ---- HD_TEMP HD_AD+ -,lv ps ps2
+GFIL Interlock Beam GFIL ----HD_AD+ HV_OFF EE_ROM ,hvps
+GFIL Interlock Beam GFIL ----HD_TEMP HD_AD+ -,lv ps ps2
 GFIL UDRS VAC 2 Beam GFIL UDRS VAC2 -----,tuned machine
 GFIL Interlock Beam GFIL -------,gun pulse driver
 GFIL Interlock Beam GFIL -------,filament ps
-GFIL Interlock Beam GFIL ---- HD_AD+ --,cold deck
+GFIL Interlock Beam GFIL ----HD_AD+ --,cold deck
 GFIL Interlock Beam GFIL -------,gun pulse driver
 GFIL Interlock Beam GFIL -------,filament ps
-GFIL Interlock Beam GFIL ---- HD_AD+ --,filament ps
+GFIL Interlock Beam GFIL ----HD_AD+ --,filament ps
 GFIL Interlock Beam GFIL -------,filament ps
 GFIL Interlock Beam GFIL -------,cold deck
 MLC stuck leaf MLC MLC -------,mlc motor
@@ -64,8 +64,8 @@ MLC Initialization Error MLC MLC INIT ------,mlc motor
 MLC Initialization Error MLC MLC INIT ------,mlc motor
 MLC Initialization Error MLC MLC INIT ------,leaf drive train
 MLC Initialization Error MLC MLC INIT ------,clean mlc leaf
-MLC losing connection treatment invalid MLC MLC ---- Leaf_Stall --,mlc motor
-MLC Leaf Stall MLC MLC ---- Leaf_Stall --,mlc motor
+MLC losing connection treatment invalid MLC MLC ----Leaf_Stall --,mlc motor
+MLC Leaf Stall MLC MLC ----Leaf_Stall --,mlc motor
 MLC stuck leaf MLC MLC -------,mlc motor
 MLC Leaf Error MLC MLC -------,mlc motor
 MLC stuck leaf MLC MLC -------,mlc motor
@@ -75,7 +75,7 @@ MLC Initialization Error MLC MLC INIT ------,softpot
 MLC COL error MLC MLC COL ------,mlc motor
 MLC COL error MLC MLC COL ------,softpot
 MLC Leaf Stopping Intermittently MLC MLC SFB ------,softpot
-MLC Leaf Stall MLC MLC ---- Leaf_Stall --,clean mlc leaf
+MLC Leaf Stall MLC MLC ----Leaf_Stall --,clean mlc leaf
 MLC Won't go to plan Leaf Failure MLC MLC -------,mlc motor
 MLC Leaf Error MLC MLC -------,mlc motor
 MLC Leaf Error MLC MLC -------,leaf drive train

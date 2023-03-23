@@ -12,6 +12,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.metrics import classification_report
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.model_selection import GridSearchCV
+
 
 def prep_data(filename):
 
@@ -39,25 +41,25 @@ def one_hot_classifier():
 def tfidf_DF_pipeline():
     return Pipeline([
         ('vectorizer', TfidfVectorizer()),
-        ('random_forest_classifier', RandomForestClassifier())
+        ('classifier', RandomForestClassifier(bootstrap=True, max_depth=10, min_samples_leaf=1,min_samples_split=1,n_estimators=10))
     ])
 
 def tfidf_MLP_pipeline():
     return Pipeline([
-        ('vectorizer_tfidf', TfidfVectorizer()),
-        ('MLP', MLPClassifier(hidden_layer_sizes=(500,), max_iter=1000, random_state=42))
+        ('vectorizer', TfidfVectorizer()),
+        ('classifier', MLPClassifier(hidden_layer_sizes=(500,), max_iter=1000, random_state=42))
     ])
 
 def tfidf_MNB_pipeline():
     return Pipeline([
-        ('vectorizer_tfidf', TfidfVectorizer()),
-        ('random_forest', MultinomialNB())
+        ('vectorizer', TfidfVectorizer()),
+        ('classifier', MultinomialNB())
     ])
 
 def tfidf_KNN_pipeline():
     return Pipeline([
-        ('vectorizer_tfidf', TfidfVectorizer()),
-        ('KNN', KNeighborsClassifier())
+        ('vectorizer', TfidfVectorizer()),
+        ('classifier', KNeighborsClassifier())
     ])
 
 def one_hot_print_results(resolutions_test, prediction):
@@ -67,46 +69,32 @@ def tfidf_print_results(resolutions_test, prediction):
     print(classification_report(resolutions_test, prediction))
 
 
-
-
-
-
-# class DecisionTree:
-#     #I think there is an argument to made about how issues and resolutions is kinda long and could be replaced with x and y
-#     #data = pd.read_csv("reorganized.csv") put this line in prep_data
-#     issues, resolutions = prep_data("reorganized.csv")
-#     vectorized_issues, vectorized_resolutions = vectorize_data(tfidf_vectorizer(), issues, resolutions) #this line needs reworking
-#     issues_train, issues_test, resolutions_train, resolutions_test = \
-#         train_test_split(vectorized_issues, vectorized_resolutions, test_size=0.3, random_state=1)
-#     predict_response(issues_train, issues_test, resolutions_train,
-#                      resolutions_test, tfidf_KNN_pipeline(), tfidf_print_results())
-
-
-
-
-
-# data = pd.read_csv("reorganized.csv") # whatever our data thing is
-# issues, resolutions = prep_data("reorganized.csv")
-# vectorized_issues, vectorized_resolutions = vectorize_data(tfidf_vectorizer(), issues, resolutions) #this is not the line to use
-# print(vectorized_issues)
-# issues_train, issues_test, resolutions_train, resolutions_test = \
-#     train_test_split(vectorized_issues, vectorized_resolutions, test_size=0.3, random_state=1)
-# pipeline = tfidf_KNN_pipeline()
-# pipeline.fit(issues_train, resolutions_train)
-# pickle.dump(pipeline, open('pipeline.pkl', 'wb'))
-# pickled_pipeline = pickle.load('pipeline.pkl', 'rb')
-
-
-def train_and_pickle_pipeline(filename="reorganized.csv", pipeline=tfidf_KNN_pipeline(), path='pipeline.pkl'):
-    issues, resolutions = prep_data(filename)
+def tune_hyperParamters():
+    pipe=tfidf_DF_pipeline()
+    param_grid = {
+        'n_estimators': [10,25, 50,100],
+        'max_depth': [2,5, 10, 20,100],
+        'min_samples_split': [1,5,10, 20],
+        'min_samples_leaf': [1,3,5,10]
+    }
+    rf = RandomForestClassifier()
+    grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, cv=5)
+    issues, resolutions = prep_data("reorganized.csv")
     x_train, x_test, y_train, y_test = train_test_split(issues,resolutions, test_size=0.3, random_state=1)
+    pipe.fit(x_train, y_train)
+    x_train=pipe['vectorizer'].transform(x_train)
+    grid_search.fit(x_train, y_train)
+    print('Best parameters:', grid_search.best_params_)
+    print('Accuracy:', grid_search.best_score_)
 
+def train_and_pickle_pipeline(filename="reorganized.csv", pipeline=tfidf_DF_pipeline(), path='pipeline.pkl',rs=1):
+    issues, resolutions = prep_data(filename)
+    x_train, x_test, y_train, y_test = train_test_split(issues,resolutions, test_size=0.3, random_state=rs)
     pipeline.fit(x_train, y_train)
     pickle.dump(pipeline, open(path, 'wb'))
 
+
 # Example usage:
 if __name__ == '__main__':
-    file_path = "/Users/cristianpanaro/PycharmProjects/sofdev-s23-medical/data/TestDataUpdated.csv"
-    pipeline = tfidf_KNN_pipeline()
-    pipeline_path = 'pipeline.pkl'
-    train_and_pickle_pipeline(file_path, pipeline, pipeline_path)
+    train_and_pickle_pipeline()
+    #tune_hyperParamters()

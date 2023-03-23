@@ -1,13 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from flask import jsonify
-
 import pickle
-from sklearn.tree import DecisionTreeClassifier  # Import Decision Tree Classifier
-from sklearn.model_selection import train_test_split  # Import train_test_split function
-from sklearn import metrics
-from sklearn.feature_extraction.text import TfidfVectorizer
 
 # configure Flask app
 app = Flask(__name__)

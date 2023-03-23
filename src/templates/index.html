@@ -6,57 +6,84 @@
 
 
 {% block body %}
+
+<!--<form action="/" method="POST">-->
+<!--    <label for="subsystem">Sub System:</label>-->
+<!--    <input type="text" name="subsystem" id="subsystem">-->
+<!--    <label for="problem">Problem:</label>-->
+<!--    <input type="text" name="problem" id="problem">-->
+<!--     <label for="error_code1">Error Code 1:</label>-->
+<!--    <input type="text" name="error_code1" id="error_code1" class="error_code">-->
+<!--&lt;!&ndash;    <label for="error_code2">Error Code 2:</label>&ndash;&gt;-->
+<!--    <input type="text" name="error_code2" id="error_code2" class="error_code">-->
+<!--&lt;!&ndash;    <label for="error_code3">Error Code 3:</label>&ndash;&gt;-->
+<!--    <input type="text" name="error_code3" id="error_code3" class="error_code">-->
+<!--    <label for="interlock1">Interlock 1:</label>-->
+<!--    <input type="text" name="interlock1" id="interlock1" class="interlock">-->
+<!--&lt;!&ndash;    <label for="interlock2">Interlock 2:</label>&ndash;&gt;-->
+<!--    <input type="text" name="interlock2" id="interlock2" class="interlock">-->
+<!--&lt;!&ndash;    <label for="interlock3">Interlock 3:</label>&ndash;&gt;-->
+<!--    <input type="text" name="interlock3" id="interlock3" class="interlock">-->
+<!--    <label for="other_codes">Other Codes</label>-->
+<!--    <input type="text" name="other_codes" id="other_codes">-->
+<!--    <input type="submit" value="Add Request">-->
+<!--</form>-->
+
+<form action="/" method="POST">
 <div class="container">
     <div id="item-add-entry">
         Add Entry
     </div>
-    <div id="item-problem">
-        Problem
-    </div>
-    <div id="item-problemBox">
-        Problem Box
-    </div>
     <div id="item-subsystem">
-        Subsystem
+        <label for="subsystem">Sub System:</label>
+        <input type="text" name="subsystem" id="subsystem">
     </div>
-    <div id="item-subsystemBox">
-        Subsystem Box
+<!--    <div id="item-subsystemBox">-->
+<!--        <input type="text" name="subsystem" id="subsystem">-->
+<!--    </div>-->
+    <div id="item-problem">
+        <label for="problem">Problem:</label>
+        <input type="text" name="problem" id="problem">
     </div>
+<!--    <div id="item-problemBox">-->
+<!--        <input type="text" name="problem" id="problem">-->
+<!--    </div>-->
 
     <div id="item-errorCodes">
         Error Codes
     </div>
     <div id="item-errorCodeBox1">
-        Error Code Box1
+            <input type="text" name="error_code1" id="error_code1" class="error_code">
     </div>
     <div id="item-errorCodeBox2">
-        Error Code Box2
+        <input type="text" name="error_code2" id="error_code2" class="error_code">
     </div>
     <div id="item-errorCodeBox3">
-        Error Code Box3
+        <input type="text" name="error_code3" id="error_code3" class="error_code">
     </div>
 
     <div id="item-interlocks">
-        interlocks
+        Interlock Codes
     </div>
     <div id="item-interlockBox1">
-        interlockBox1
+           <input type="text" name="interlock1" id="interlock1" class="interlock">
     </div>
     <div id="item-interlockBox2">
-        interlockBox2
+        <input type="text" name="interlock2" id="interlock2" class="interlock">
     </div>
     <div id="item-interlockBox3">
-        interlockBox3
+        <input type="text" name="interlock3" id="interlock3" class="interlock">
     </div>
 
     <div id="item-otherCodes">
-        Other Codes
+        <label for="other_codes">Other Codes</label>
     </div>
     <div id="item-otherCodesBox">
-        Other Codes Box
+        <input type="text" name="other_codes" id="other_codes">
     </div>
 </div>
-
+     <input type="submit" value="Add Request">
+</form>
 
 
 </div>
@@ -102,27 +129,7 @@
 </table>
 
 
-<form action="/" method="POST">
-    <label for="subsystem">Sub System:</label>
-    <input type="text" name="subsystem" id="subsystem">
-    <label for="problem">Problem:</label>
-    <input type="text" name="problem" id="problem">
-     <label for="error_code1">Error Code 1:</label>
-    <input type="text" name="error_code1" id="error_code1" class="error_code">
-    <label for="error_code2">Error Code 2:</label>
-    <input type="text" name="error_code2" id="error_code2" class="error_code">
-    <label for="error_code3">Error Code 3:</label>
-    <input type="text" name="error_code3" id="error_code3" class="error_code">
-    <label for="interlock1">Interlock 1:</label>
-    <input type="text" name="interlock1" id="interlock1" class="interlock">
-    <label for="interlock2">Interlock 2:</label>
-    <input type="text" name="interlock2" id="interlock2" class="interlock">
-    <label for="interlock3">Interlock 3:</label>
-    <input type="text" name="interlock3" id="interlock3" class="interlock">
-    <label for="other_codes">Other Codes</label>
-    <input type="text" name="other_codes" id="other_codes">
-    <input type="submit" value="Add Request">
-</form>
+
 <!--    add styling later-->
 <!--    <style>-->
 <!--        .ui-autocomplete {-->

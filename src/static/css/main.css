@@ -1,30 +1,33 @@
-body {
-    color: black;
-    background-color: white;
-    font-family: 'Roboto', sans-serif;
 
+
+
+body {
+  color: white;
+  background-color: #1152A4;
+  font-family: 'Roboto', sans-serif;
 }
 
 h2 {
-    text-align: center;
+  text-align: center;
 }
+
 table {
   margin: 0 auto;
 }
 
 th, td {
-    border: 1px solid;
-  }
+  border: 1px solid;
+}
 
 th {
-    background-color: black;
-    color: white;
-
+  background-color: #FA792B;
+  color: black;
 }
 
 form {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  justify-content: center; /* Horizontally centers items in the container */
   align-items: center;
   margin-top: 20px;
 }
@@ -39,6 +42,7 @@ input[type="text"] {
   width: 300px;
   padding: 5px;
   margin-bottom: 10px;
+  margin-right: 10px; /* Adds space between input boxes */
   border-radius: 5px;
   border: 1px solid #ccc;
 }
@@ -56,4 +60,6 @@ input[type="submit"]:hover {
   background-color: #3e8e41;
 }
 
-
+input[type="text"], textarea {
+  background-color : #20ABB5;
+}

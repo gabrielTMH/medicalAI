@@ -142,9 +142,11 @@ def update(id):
 def top_predictions(model, input, num_of_resolutions):
     predictions = model.predict_proba(input)[0]
     top_indices = predictions.argsort()[::-1][:num_of_resolutions]
-    answers = []
+    answers = ""
+    c=1
     for i in top_indices:
-        answers.append("Class: " + model.classes_[i] + " - Probability: " + str(predictions[i]))
+        answers += (str(c) + ". " + model.classes_[i] + " - " + str(int(float(predictions[i])*100)) + "%\t")
+        c+=1
     return answers
 
 

@@ -1,7 +1,7 @@
 body {
-  color: white;
-  background-color: #1152A4;
-  font-family: 'Roboto', sans-serif;
+  color: #1152A4;
+  background-color: #FBF8F3;
+  font-family: 'Romana', sans-serif;
 }
 
 h2 {
@@ -16,9 +16,10 @@ th, td {
   border: 1px solid;
 }
 
+/* Top label row for answer  */
 th {
-  background-color: #FA792B;
-  color: black;
+  background-color: #20ABB5;
+  color: #1152A4;
 }
 
 
@@ -49,24 +50,25 @@ input[type="text"] {
   border: 1px solid #ccc;
 }
 
+/* Add Request Button */
 input[type="submit"] {
   padding: 5px 20px;
-  background-color: #4CAF50;
+  background-color: #FA792B;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
+/* Add Request Hover */
 input[type="submit"]:hover {
   background-color: #3e8e41;
 }
 
+/* Input Boxes */
 input[type="text"], textarea {
-  background-color : #20ABB5;
+  background-color : #C1F4F2;
 }
-
-/**/
 
 #item-add-entry {
   grid-area: add-entry;
@@ -127,3 +129,4 @@ input[type="text"], textarea {
     "errorCodes . . interlocks . . otherCodes . ."
     "errorCodeBox1 errorCodeBox2 errorCodeBox3 interlockBox1 interlockBox2 interlockBox3 otherCodesBox otherCodesBox otherCodesBox";
 }
+

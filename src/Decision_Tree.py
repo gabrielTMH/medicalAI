@@ -4,8 +4,6 @@ from sklearn import metrics
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import *
-from sklearn.utils import shuffle
 from sklearn.neural_network import *
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import Pipeline
@@ -65,37 +63,6 @@ def one_hot_print_results(resolutions_test, prediction):
 
 def tfidf_print_results(resolutions_test, prediction):
     print(classification_report(resolutions_test, prediction))
-
-
-
-
-
-
-# class DecisionTree:
-#     #I think there is an argument to made about how issues and resolutions is kinda long and could be replaced with x and y
-#     #data = pd.read_csv("reorganized.csv") put this line in prep_data
-#     issues, resolutions = prep_data("reorganized.csv")
-#     vectorized_issues, vectorized_resolutions = vectorize_data(tfidf_vectorizer(), issues, resolutions) #this line needs reworking
-#     issues_train, issues_test, resolutions_train, resolutions_test = \
-#         train_test_split(vectorized_issues, vectorized_resolutions, test_size=0.3, random_state=1)
-#     predict_response(issues_train, issues_test, resolutions_train,
-#                      resolutions_test, tfidf_KNN_pipeline(), tfidf_print_results())
-
-
-
-
-
-# data = pd.read_csv("reorganized.csv") # whatever our data thing is
-# issues, resolutions = prep_data("reorganized.csv")
-# vectorized_issues, vectorized_resolutions = vectorize_data(tfidf_vectorizer(), issues, resolutions) #this is not the line to use
-# print(vectorized_issues)
-# issues_train, issues_test, resolutions_train, resolutions_test = \
-#     train_test_split(vectorized_issues, vectorized_resolutions, test_size=0.3, random_state=1)
-# pipeline = tfidf_KNN_pipeline()
-# pipeline.fit(issues_train, resolutions_train)
-# pickle.dump(pipeline, open('pipeline.pkl', 'wb'))
-# pickled_pipeline = pickle.load('pipeline.pkl', 'rb')
-
 
 def train_and_pickle_pipeline(filename="reorganized.csv", pipeline=tfidf_KNN_pipeline(), path='pipeline.pkl'):
     issues, resolutions = prep_data(filename)

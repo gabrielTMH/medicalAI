@@ -1,6 +1,3 @@
-
-
-
 body {
   color: white;
   background-color: #1152A4;
@@ -24,13 +21,18 @@ th {
   color: black;
 }
 
+
+
+/*
 form {
   display: flex;
-  flex-wrap: wrap; /* Allows items to wrap to the next line */
-  justify-content: center; /* Horizontally centers items in the container */
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   margin-top: 20px;
 }
+*/
+
 
 label {
   display: inline-block;
@@ -42,7 +44,7 @@ input[type="text"] {
   width: 300px;
   padding: 5px;
   margin-bottom: 10px;
-  margin-right: 10px; /* Adds space between input boxes */
+  margin-right: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
@@ -62,4 +64,50 @@ input[type="submit"]:hover {
 
 input[type="text"], textarea {
   background-color : #20ABB5;
+}
+
+/**/
+
+.item-a {
+  grid-area: add-entry;
+  background-color: black;
+}
+.item-b {
+  grid-area: problem;
+}
+.item-c {
+  grid-area: problemBox;
+}
+.item-d {
+  grid-area: subsystem;
+}
+.item-e {
+  grid-area: subsystemBox;
+}
+.item-f {
+  grid-area: errorCodes;
+}
+.item-g {
+  grid-area: errorCode1;
+}
+.item-h {
+  grid-area: errorCode2;
+}
+.item-i {
+  grid-area: interlocks ;
+}
+.item-j {
+  grid-area: otherCodes;
+}
+
+.container {
+  margin: 50px;
+  display: grid;
+  grid-template-columns: 1/9 1/9 1/9 1/9 1/9 1/9 1/9 1/9 1/9 ;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "add-entry . . . . . . . ."
+    "subsystem subsystemBox problem problemBox . . . . ."
+    "errorCodes . . interlocks . . otherCodes . ."
+    ". . . . . . . . .";
 }

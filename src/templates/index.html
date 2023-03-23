@@ -6,6 +6,36 @@
 
 
 {% block body %}
+<div class="container">
+    <div class="item-a">
+        Add Entry
+    </div>
+    <div class="item-b">
+        Problem
+    </div>
+    <div class="item-c">
+        Problem Box
+    </div>
+    <div class="item-d">
+        Subsystem
+    </div>
+    <div class="item-e">
+        Subsystem Box
+    </div>
+    <div class="item-f">
+        Error Codes
+    </div>
+    <div class="item-i">
+        interlocks
+    </div>
+    <div class="item-j">
+        Other Codes
+    </div>
+</div>
+
+
+
+</div>
 <div id="right-column">
 <h2>medical AI</h2>
 <table class="table-bordered">
@@ -47,8 +77,9 @@
 {% endfor %}
 </table>
 
+
 <form action="/" method="POST">
-    <label for="problem">Sub System:</label>
+    <label for="subsystem">Sub System:</label>
     <input type="text" name="subsystem" id="subsystem">
     <label for="problem">Problem:</label>
     <input type="text" name="problem" id="problem">
@@ -58,7 +89,6 @@
     <input type="text" name="error_code2" id="error_code2" class="error_code">
     <label for="error_code3">Error Code 3:</label>
     <input type="text" name="error_code3" id="error_code3" class="error_code">
-
     <label for="interlock1">Interlock 1:</label>
     <input type="text" name="interlock1" id="interlock1" class="interlock">
     <label for="interlock2">Interlock 2:</label>

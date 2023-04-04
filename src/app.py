@@ -66,8 +66,6 @@ def index():
         model, vectorizer = unpickle_and_split_pipeline()
         result = input_to_result(complete_issue_list, model, vectorizer)
         result = str(result)
-        for i in result:
-            print(i)
 
         new_request = UserRequest(subsystem=subsystem, problem=problem, error_code1=error_code1,
                                   error_code2=error_code2, error_code3=error_code3,

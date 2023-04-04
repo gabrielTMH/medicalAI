@@ -168,7 +168,7 @@ def encode_user_input(vectorizer, raw_text):
 
 def unpickle_and_split_pipeline(picklepath='pipeline.pkl'):
     pipe = pickle.load(open(picklepath, 'rb'))
-    classifier = pipe['random_forest_classifier']
+    classifier = pipe['classifier']
     vectorizer = pipe['vectorizer']
     return classifier, vectorizer
 

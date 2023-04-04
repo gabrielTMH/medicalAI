@@ -41,8 +41,9 @@ label {
   margin-bottom: 10px;
 }
 
+
 input[type="text"] {
-  width: 1/9;
+  width: 80%;
   padding: 5px;
   margin-bottom: 10px;
   margin-right: 10px;
@@ -52,17 +53,26 @@ input[type="text"] {
 
 /* Add Request Button */
 input[type="submit"] {
-  padding: 5px 20px;
+  padding: 10px 30px;
   background-color: #FA792B;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+
+
+}
+
+/* Center the button */
+input[type="submit"] {
+  display: block;
+  margin: 0 auto;
 }
 
 /* Add Request Hover */
 input[type="submit"]:hover {
-  background-color: #3e8e41;
+  background-color: #e64405;
+
 }
 
 /* Input Boxes */
@@ -72,7 +82,6 @@ input[type="text"], textarea {
 
 #item-add-entry {
   grid-area: add-entry;
-  background-color: black;
 }
 #item-problem {
   grid-area: problem;
@@ -119,9 +128,13 @@ input[type="text"], textarea {
 
 
 .container {
+  background-color: #20ABB5;
+  border: 2px solid black;
+  boarder-radius: 25%;
   margin: 50px;
   display: grid;
-  grid-template-columns: 1/9 1/9 1/9 1/9 1/9 1/9 1/9 1/9 1/9 ;
+
+  grid-template-columns: repeat(auto-fit);
   grid-template-rows: auto;
   grid-template-areas:
     "add-entry . . . . . . . ."

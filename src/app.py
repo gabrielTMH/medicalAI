@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import pickle
+from sqlalchemy import desc
 
 # configure Flask app
 app = Flask(__name__)
@@ -65,8 +66,6 @@ def index():
         model, vectorizer = unpickle_and_split_pipeline()
         result = input_to_result(complete_issue_list, model, vectorizer)
         result = str(result)
-        for i in result:
-            print(i)
 
         new_request = UserRequest(subsystem=subsystem, problem=problem, error_code1=error_code1,
                                   error_code2=error_code2, error_code3=error_code3,
@@ -82,7 +81,7 @@ def index():
             return 'There was an issue adding your request'
 
     else:
-        requests = UserRequest.query.order_by(UserRequest.date_created).all()
+        requests = UserRequest.query.order_by(desc(UserRequest.date_created)).limit(10).all()
         return render_template('index.html', requests=requests)
 
 

@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import pickle
+from sqlalchemy import desc
 
 # configure Flask app
 app = Flask(__name__)
@@ -82,7 +83,7 @@ def index():
             return 'There was an issue adding your request'
 
     else:
-        requests = UserRequest.query.order_by(UserRequest.date_created).all()
+        requests = UserRequest.query.order_by(desc(UserRequest.date_created)).limit(10).all()
         return render_template('index.html', requests=requests)
 
 

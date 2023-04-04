@@ -119,6 +119,9 @@ input[type="text"], textarea {
 
 
 .container {
+  background-color: #20ABB5;
+  border: 2px solid black;
+  boarder-radius: 25%;
   margin: 50px;
   display: grid;
   grid-template-columns: 1/9 1/9 1/9 1/9 1/9 1/9 1/9 1/9 1/9 ;

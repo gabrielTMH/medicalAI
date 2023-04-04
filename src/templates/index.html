@@ -6,8 +6,67 @@
 
 
 {% block body %}
+
+<form action="/" method="POST">
+<div class="container">
+    <div id="item-add-entry">
+        Add Entry
+    </div>
+    <div id="item-subsystem">
+        <label for="subsystem">Sub System:</label>
+        <input type="text" name="subsystem" id="subsystem">
+    </div>
+<!--    <div id="item-subsystemBox">-->
+<!--        <input type="text" name="subsystem" id="subsystem">-->
+<!--    </div>-->
+    <div id="item-problem">
+        <label for="problem">Problem:</label>
+        <input type="text" name="problem" id="problem">
+    </div>
+<!--    <div id="item-problemBox">-->
+<!--        <input type="text" name="problem" id="problem">-->
+<!--    </div>-->
+
+    <div id="item-errorCodes">
+        Error Codes
+    </div>
+    <div id="item-errorCodeBox1">
+            <input type="text" name="error_code1" id="error_code1" class="error_code">
+    </div>
+    <div id="item-errorCodeBox2">
+        <input type="text" name="error_code2" id="error_code2" class="error_code">
+    </div>
+    <div id="item-errorCodeBox3">
+        <input type="text" name="error_code3" id="error_code3" class="error_code">
+    </div>
+
+    <div id="item-interlocks">
+        Interlock Codes
+    </div>
+    <div id="item-interlockBox1">
+           <input type="text" name="interlock1" id="interlock1" class="interlock">
+    </div>
+    <div id="item-interlockBox2">
+        <input type="text" name="interlock2" id="interlock2" class="interlock">
+    </div>
+    <div id="item-interlockBox3">
+        <input type="text" name="interlock3" id="interlock3" class="interlock">
+    </div>
+
+    <div id="item-otherCodes">
+        <label for="other_codes">Other Codes</label>
+    </div>
+    <div id="item-otherCodesBox">
+        <input type="text" name="other_codes" id="other_codes">
+    </div>
+</div>
+     <input type="submit" value="Add Request">
+</form>
+
+
+</div>
 <div id="right-column">
-<h2>medical AI</h2>
+<h2>Medical AI</h2>
 <table class="table-bordered">
     <tr>
     <th>Sub System</th>
@@ -47,54 +106,6 @@
 {% endfor %}
 </table>
 
-<form action="/" method="POST">
-    <label for="problem">Sub System:</label>
-    <input type="text" name="subsystem" id="subsystem">
-    <label for="problem">Problem:</label>
-    <input type="text" name="problem" id="problem">
-     <label for="error_code1">Error Code 1:</label>
-    <input type="text" name="error_code1" id="error_code1" class="error_code">
-    <label for="error_code2">Error Code 2:</label>
-    <input type="text" name="error_code2" id="error_code2" class="error_code">
-    <label for="error_code3">Error Code 3:</label>
-    <input type="text" name="error_code3" id="error_code3" class="error_code">
-
-    <label for="interlock1">Interlock 1:</label>
-    <input type="text" name="interlock1" id="interlock1" class="interlock">
-    <label for="interlock2">Interlock 2:</label>
-    <input type="text" name="interlock2" id="interlock2" class="interlock">
-    <label for="interlock3">Interlock 3:</label>
-    <input type="text" name="interlock3" id="interlock3" class="interlock">
-    <label for="other_codes">Other Codes</label>
-    <input type="text" name="other_codes" id="other_codes">
-    <input type="submit" value="Add Request">
-</form>
-<!--    add styling later-->
-<!--    <style>-->
-<!--        .ui-autocomplete {-->
-<!--  position: absolute;-->
-<!--  z-index: 9999;-->
-<!--  cursor: default;-->
-<!--  background-color: #ffffff;-->
-<!--  border: 1px solid #ccc;-->
-<!--  max-height: 200px;-->
-<!--  overflow-y: auto;-->
-<!--}-->
-
-<!--.ui-autocomplete li {-->
-<!--  list-style: none;-->
-<!--  padding: 5px 10px;-->
-<!--}-->
-
-<!--.ui-autocomplete li:hover {-->
-<!--  background-color: #f5f5f5;-->
-<!--}-->
-
-<!--.ui-autocomplete li.ui-state-active {-->
-<!--  background-color: #3399ff;-->
-<!--  color: #ffffff;-->
-<!--}-->
-<!--    </style>-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -138,7 +149,6 @@
     } );
   </script>
 </div>
-
 
 </form>
 

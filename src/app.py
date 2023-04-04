@@ -1,13 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from flask import jsonify
-
 import pickle
-from sklearn.tree import DecisionTreeClassifier  # Import Decision Tree Classifier
-from sklearn.model_selection import train_test_split  # Import train_test_split function
-from sklearn import metrics
-from sklearn.feature_extraction.text import TfidfVectorizer
 
 # configure Flask app
 app = Flask(__name__)
@@ -68,12 +62,11 @@ def index():
         complete_issue = f'{subsystem}{problem}{error_code1}{error_code2}{error_code3}{interlock1}{interlock2}' \
                          f'{interlock3}{other_codes}'
 
-        model,vectorizer=unpickle_and_split_pipeline()
-        result= input_to_result(complete_issue_list,model,vectorizer)
+        model, vectorizer = unpickle_and_split_pipeline()
+        result = input_to_result(complete_issue_list, model, vectorizer)
         result = str(result)
         for i in result:
             print(i)
-
 
         new_request = UserRequest(subsystem=subsystem, problem=problem, error_code1=error_code1,
                                   error_code2=error_code2, error_code3=error_code3,
@@ -112,7 +105,28 @@ def update(id):
     user_request = UserRequest.query.get_or_404(id)
 
     if request.method == 'POST':
-        request.problem = request.form['problem']
+        user_request.subsystem = request.form['subsystem']
+        user_request.problem = request.form['problem']
+        user_request.error_code1 = request.form['error_code1']
+        user_request.error_code2 = request.form['error_code2']
+        user_request.error_code3 = request.form['error_code3']
+
+        user_request.interlock1 = request.form['interlock1']
+        user_request.interlock2 = request.form['interlock2']
+        user_request.interlock3 = request.form['interlock3']
+
+        user_request.other_codes = request.form['other_codes']
+
+        # create "issue" for model
+        complete_issue_list = [user_request.subsystem, user_request.problem, user_request.error_code1,
+                               user_request.error_code2, user_request.error_code3, user_request.interlock1,
+                               user_request.interlock2, user_request.interlock3, user_request.other_codes]
+
+        model, vectorizer = unpickle_and_split_pipeline()
+        result = input_to_result(complete_issue_list, model, vectorizer)
+        result = str(result)
+
+        user_request.result = result
 
         try:
             db.session.commit()
@@ -122,47 +136,48 @@ def update(id):
 
 
     else:
-        return render_template('update.html', request=request)
+        return render_template('update.html', user_request=user_request)
 
 
 def top_predictions(model, input, num_of_resolutions):
-  predictions = model.predict_proba(input)[0]
-  top_indices = predictions.argsort()[::-1][:num_of_resolutions]
-  answers=[]
-  for i in top_indices:
-      answers.append("Class: "+ model.classes_[i]+ " - Probability: "+ str(predictions[i]))
-  return answers
+    predictions = model.predict_proba(input)[0]
+    top_indices = predictions.argsort()[::-1][:num_of_resolutions]
+    answers = ""
+    c=1
+    for i in top_indices:
+        answers += (str(c) + ". " + model.classes_[i] + " - " + str(int(float(predictions[i])*100)) + "%\t")
+        c+=1
+    return answers
 
 
 def combine_raw_text(text):
-    result=''
+    result = ''
     for i in range(len(text)):
         if text[i] in (None, ""):
-            text[i]='-'
-        elif text[i-1] == '-':
-            result+=' ' + text[i]
+            text[i] = '-'
+        elif text[i - 1] == '-':
+            result += ' ' + text[i]
         result += text[i]
     return result
 
-def encode_user_input(vectorizer,raw_text):
-    combined_text=combine_raw_text(raw_text)
+
+def encode_user_input(vectorizer, raw_text):
+    combined_text = combine_raw_text(raw_text)
     return vectorizer.transform(combined_text)
+
 
 def unpickle_and_split_pipeline(picklepath='pipeline.pkl'):
     pipe = pickle.load(open(picklepath, 'rb'))
     classifier = pipe['classifier']
     vectorizer = pipe['vectorizer']
-    return classifier,vectorizer
+    return classifier, vectorizer
+
 
 def input_to_result(list, classifier, vectorizer):
-    text_to_vectorize= combine_raw_text(list)
-    vectorized_text= vectorizer.transform([text_to_vectorize])
-    predictions=top_predictions(classifier,vectorized_text,3)
+    text_to_vectorize = combine_raw_text(list)
+    vectorized_text = vectorizer.transform([text_to_vectorize])
+    predictions = top_predictions(classifier, vectorized_text, 3)
     return predictions
-
-
-
-
 
 
 # debugger mode

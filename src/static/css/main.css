@@ -1,33 +1,39 @@
 body {
-    color: black;
-    background-color: white;
-    font-family: 'Roboto', sans-serif;
-
+  color: #1152A4;
+  background-color: #FBF8F3;
+  font-family: 'Romana', sans-serif;
 }
 
 h2 {
-    text-align: center;
+  text-align: center;
 }
+
 table {
   margin: 0 auto;
 }
 
 th, td {
-    border: 1px solid;
-  }
-
-th {
-    background-color: black;
-    color: white;
-
+  border: 1px solid;
 }
 
+/* Top label row for answer  */
+th {
+  background-color: #20ABB5;
+  color: #1152A4;
+}
+
+
+
+/*
 form {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   margin-top: 20px;
 }
+*/
+
 
 label {
   display: inline-block;
@@ -36,24 +42,91 @@ label {
 }
 
 input[type="text"] {
-  width: 300px;
+  width: 1/9;
   padding: 5px;
   margin-bottom: 10px;
+  margin-right: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
 
+/* Add Request Button */
 input[type="submit"] {
   padding: 5px 20px;
-  background-color: #4CAF50;
+  background-color: #FA792B;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
+/* Add Request Hover */
 input[type="submit"]:hover {
   background-color: #3e8e41;
 }
 
+/* Input Boxes */
+input[type="text"], textarea {
+  background-color : #C1F4F2;
+}
+
+#item-add-entry {
+  grid-area: add-entry;
+  background-color: black;
+}
+#item-problem {
+  grid-area: problem;
+}
+#item-problemBox {
+  grid-area: problemBox;
+}
+#item-subsystem {
+  grid-area: subsystem;
+}
+#item-subsystemBox {
+  grid-area: subsystemBox;
+}
+#item-errorCodes {
+  grid-area: errorCodes;
+}
+#item-errorCodeBox1 {
+  grid-area: errorCodeBox1;
+}
+#item-errorCodeBox2 {
+  grid-area: errorCodeBox2;
+}
+#item-errorCodeBox3 {
+  grid-area: errorCodeBox3 ;
+}
+#item-interlocks {
+  grid-area: interlocks;
+}
+#item-interlockBox1 {
+  grid-area: interlockBox1;
+}
+#item-interlockBox2 {
+  grid-area: interlockBox2;
+}
+#item-interlockBox3 {
+  grid-area: interlockBox3;
+}
+#item-otherCodes {
+  grid-area: otherCodes;
+}
+#item-otherCodesBox {
+  grid-area: otherCodesBox;
+}
+
+
+.container {
+  margin: 50px;
+  display: grid;
+  grid-template-columns: 1/9 1/9 1/9 1/9 1/9 1/9 1/9 1/9 1/9 ;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "add-entry . . . . . . . ."
+    "subsystem subsystem problem problem . . . . ."
+    "errorCodes . . interlocks . . otherCodes . ."
+    "errorCodeBox1 errorCodeBox2 errorCodeBox3 interlockBox1 interlockBox2 interlockBox3 otherCodesBox otherCodesBox otherCodesBox";
+}
 

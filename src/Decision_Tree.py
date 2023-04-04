@@ -4,8 +4,6 @@ from sklearn import metrics
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import *
-from sklearn.utils import shuffle
 from sklearn.neural_network import *
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.pipeline import Pipeline

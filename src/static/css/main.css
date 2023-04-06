@@ -22,19 +22,6 @@ th {
   color: #1152A4;
 }
 
-
-
-/*
-form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-*/
-
-
 label {
   display: inline-block;
   width: 150px;
@@ -79,6 +66,8 @@ input[type="submit"]:hover {
 input[type="text"], textarea {
   background-color : #C1F4F2;
 }
+
+
 
 #item-add-entry {
   grid-area: add-entry;
@@ -131,8 +120,6 @@ input[type="text"], textarea {
   grid-area: otherCodesBox;
 }
 */
-
-@media only screen {
 .container {
   background-color: #20ABB5;
   border: 2px solid black;
@@ -148,10 +135,10 @@ input[type="text"], textarea {
     "errorCodes .  interlocks  .otherCodes . . . . "
     "bottom bottom bottom bottom bottom bottom bottom bottom bottom";
 }
-}
+
 
 /*DESKTOP/FULL WEBSITE*/
-@media only screen and (min-width: 900px) {
+@media screen and (min-width: 768px) {
 #item-add-entry {
   grid-area: add-entry;
 }
@@ -213,9 +200,8 @@ input[type="text"], textarea {
     "errorCodes . . interlocks . . otherCodes . ."
     "errorCodeBox1 errorCodeBox2 errorCodeBox3 interlockBox1 interlockBox2 interlockBox3 otherCodesBox otherCodesBox otherCodesBox";
 }
-
-
 }
+
 
 /*
 "errorCodeBox1 errorCodeBox2 errorCodeBox3 interlockBox1 interlockBox2 interlockBox3 otherCodesBox otherCodesBox otherCodesBox";

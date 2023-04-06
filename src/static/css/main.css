@@ -126,11 +126,91 @@ input[type="text"], textarea {
   grid-area: otherCodesBox;
 }
 
+.blueBox {
+background-color: #C1F4F2;
+border: 2px solid black;
+border-radius: 5px;
+margin: 3%;
+}
+
+.subsystem{
+height: max-content
+}
+
+.problem{
+width:
+}
+
+.textcolor{
+color: #FBF8F3;
+}
+
+.entrymod{
+background-color: #FA792B;
+color: #FBF8F3;
+border-radius: 5px;
+display: flex;
+flex-direction: column;
+align-items: center;
+height: max-content;
+}
+
+
+.descriptionHead, .rescontainer {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+.descriptionHead{
+ display: flex;
+  flex-wrap: wrap;
+}
+
+.darkBlueBox{
+background-color: #20ABB5;
+text-color: #1152A4;
+border-radius: 5px;
+margin: 1%;
+padding: 2%;
+height: max-content;
+}
+
+.EIcontainer {
+  flex-direction: column;
+  display: flex;
+ }
+
+.rescontainer {
+color: #FBF8F3
+border: 2px solid black;
+  boarder-radius: 25px;
+  margin: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit);
+  grid-template-rows: auto;
+   grid-template-areas:
+    "add-entry . . . . . . . ."
+    "subsystem subsystem problem problem . . . . ."
+    "errorCodes . . interlocks . . otherCodes . ."
+    "errorCodeBox1 errorCodeBox2 errorCodeBox3 interlockBox1 interlockBox2 interlockBox3 otherCodesBox otherCodesBox otherCodesBox";
+
+}
+
+
+.EIcodebox {
+  flex: 1; /* make the boxes take up equal space */
+  border: 2px solid black; /* add a border to the boxes */
+  padding: 10px;
+  background-color: #C1F4F2;
+  margin: 3%;
+  border-radius: 5px;
+
+}
 
 .container {
   background-color: #20ABB5;
   border: 2px solid black;
-  boarder-radius: 25%;
+  boarder-radius: 25px;
   margin: 50px;
   display: grid;
 
@@ -143,3 +223,15 @@ input[type="text"], textarea {
     "errorCodeBox1 errorCodeBox2 errorCodeBox3 interlockBox1 interlockBox2 interlockBox3 otherCodesBox otherCodesBox otherCodesBox";
 }
 
+@media screen and (max-width: 768px) {
+/*
+make it so when we hit a min width we delet fields so that only the probability and codes are shown
+*/
+.container {
+grid-template-areas:
+"add-entry add-entry add-entry add-entry add-entry add-entry add-entry add-entry add-entry"
+"subsystem subsystem subsystem subsystem problem problem problem problem problem"
+"errorCodes errorCodes errorCodes interlocks interlocks interlocks otherCodes otherCodes otherCodes"
+"errorCodeBox1 errorCodeBox2 errorCodeBox3 interlockBox1 interlockBox2 interlockBox3 otherCodesBox otherCodesBox otherCodesBox";
+}
+}

@@ -103,7 +103,7 @@ input[type="text"], textarea {
 }
 
 #item-bottom {
-    grid-area: errorCodeBox1;
+    grid-area: bottom;
 }
 #item-otherCodes {
   grid-area: otherCodes;
@@ -132,7 +132,7 @@ input[type="text"], textarea {
 }
 */
 
-@media only screen and (min-width: 375px) {
+@media only screen {
 .container {
   background-color: #20ABB5;
   border: 2px solid black;
@@ -146,8 +146,75 @@ input[type="text"], textarea {
     "add-entry . . . . . . . ."
     "subsystem subsystem problem problem . . . . ."
     "errorCodes .  interlocks  .otherCodes . . . . "
-    "errorCodeBox1 errorCodeBox1 errorCodeBox1 errorCodeBox1 errorCodeBox1 errorCodeBox1 errorCodeBox1 errorCodeBox1 errorCodeBox1";
+    "bottom bottom bottom bottom bottom bottom bottom bottom bottom";
 }
+}
+
+/*DESKTOP/FULL WEBSITE*/
+@media only screen and (min-width: 900px) {
+#item-add-entry {
+  grid-area: add-entry;
+}
+#item-problem {
+  grid-area: problem;
+}
+#item-problemBox {
+  grid-area: problemBox;
+}
+#item-subsystem {
+  grid-area: subsystem;
+}
+#item-subsystemBox {
+  grid-area: subsystemBox;
+}
+#item-errorCodes {
+  grid-area: errorCodes;
+}
+#item-errorCodeBox1 {
+  grid-area: errorCodeBox1;
+}
+#item-errorCodeBox2 {
+  grid-area: errorCodeBox2;
+}
+#item-errorCodeBox3 {
+  grid-area: errorCodeBox3 ;
+}
+#item-interlocks {
+  grid-area: interlocks;
+}
+#item-interlockBox1 {
+  grid-area: interlockBox1;
+}
+#item-interlockBox2 {
+  grid-area: interlockBox2;
+}
+#item-interlockBox3 {
+  grid-area: interlockBox3;
+}
+#item-otherCodes {
+  grid-area: otherCodes;
+}
+#item-otherCodesBox {
+  grid-area: otherCodesBox;
+}
+
+.container {
+  background-color: #20ABB5;
+  border: 2px solid black;
+  boarder-radius: 25%;
+  margin: 50px;
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit);
+  grid-template-rows: auto;
+  grid-template-areas:
+    "add-entry . . . . . . . ."
+    "subsystem subsystem problem problem . . . . ."
+    "errorCodes . . interlocks . . otherCodes . ."
+    "errorCodeBox1 errorCodeBox2 errorCodeBox3 interlockBox1 interlockBox2 interlockBox3 otherCodesBox otherCodesBox otherCodesBox";
+}
+
+
 }
 
 /*

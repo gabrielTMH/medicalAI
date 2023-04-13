@@ -22,19 +22,6 @@ th {
   color: #1152A4;
 }
 
-
-
-/*
-form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-*/
-
-
 label {
   display: inline-block;
   width: 150px;
@@ -43,6 +30,7 @@ label {
 
 
 input[type="text"] {
+    display: inline-block;
   width: 80%;
   padding: 5px;
   margin-bottom: 10px;
@@ -59,7 +47,6 @@ input[type="submit"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-
 
 }
 
@@ -80,6 +67,10 @@ input[type="text"], textarea {
   background-color : #C1F4F2;
 }
 
+
+
+
+/*DESKTOP/FULL WEBSITE*/
 #item-add-entry {
   grid-area: add-entry;
 }
@@ -126,7 +117,6 @@ input[type="text"], textarea {
   grid-area: otherCodesBox;
 }
 
-
 .container {
   background-color: #20ABB5;
   border: 2px solid black;
@@ -143,3 +133,97 @@ input[type="text"], textarea {
     "errorCodeBox1 errorCodeBox2 errorCodeBox3 interlockBox1 interlockBox2 interlockBox3 otherCodesBox otherCodesBox otherCodesBox";
 }
 
+@media (max-width: 550px) {
+#right-column {
+    display: none;
+    }
+body {
+  color: #1152A4;
+  background-color: #FBF8F3;
+  font-family: 'Romana', sans-serif;
+}
+#item-add-entry {
+  grid-area: add-entry;
+}
+#item-problem {
+  grid-area: problem;
+}
+#item-problemBox {
+  grid-area: problemBox;
+}
+#item-subsystem {
+  grid-area: subsystem;
+}
+#item-subsystemBox {
+  grid-area: subsystemBox;
+}
+#item-errorCodes {
+  grid-area: errorCodes;
+}
+#item-interlocks {
+  grid-area: interlocks;
+}
+
+#item-otherCodes {
+  grid-area: otherCodes;
+}
+
+#item-errorCodeBox1 {
+  grid-area: errorCodeBox1;
+}
+
+#item-errorCodeBox2 {
+  grid-area: errorCodeBox2;
+}
+#item-errorCodeBox3 {
+  grid-area: errorCodeBox3 ;
+}
+#item-interlockBox1 {
+  grid-area: interlockBox1;
+}
+#item-interlockBox2 {
+  grid-area: interlockBox2;
+}
+#item-interlockBox3 {
+  grid-area: interlockBox3;
+}
+#item-otherCodesBox {
+  grid-area: otherCodesBox;
+}
+.container {
+  border: 2px solid black;
+  boarder-radius: 25%;
+  margin: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit);
+  grid-template-rows: auto;
+  grid-template-areas:
+    "add-entry . . . . . "
+    "subsystem subsystem . . . . "
+    "problem problem . . . . "
+    "errorCodes errorCodes . . . ."
+    "errorCodeBox1 errorCodeBox1 errorCodeBox1 . . ."
+    "errorCodeBox2 errorCodeBox2 errorCodeBox2 . . ."
+    "errorCodeBox3 errorCodeBox3 errorCodeBox3 . . ."
+    "interlocks interlocks interlocks . . ."
+    "interlockBox1 interlockBox1 interlockBox1 . . ."
+    "interlockBox2 interlockBox2 interlockBox2 . . ."
+    "interlockBox3 interlockBox3 interlockBox3 . . ."
+    "otherCodes otherCodes . . . ."
+    "otherCodesBox otherCodesBox otherCodesBox . . .";
+}
+
+}
+}
+
+
+/*
+"errorCodeBox1 errorCodeBox2 errorCodeBox3 interlockBox1 interlockBox2 interlockBox3 otherCodesBox otherCodesBox otherCodesBox";
+*/
+
+/*
+Small mobile screens: max-width 480px
+Larger mobile screens: min-width 481px and max-width 767px
+Tablets: min-width 768px and max-width 1023px
+Desktops: min-width 1024px
+*/

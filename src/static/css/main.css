@@ -134,9 +134,12 @@ input[type="text"], textarea {
 }
 
 @media (max-width: 550px) {
+#right-column {
+    display: none;
+    }
 body {
-  color: green;
-  background-color: green;
+  color: #1152A4;
+  background-color: #FBF8F3;
   font-family: 'Romana', sans-serif;
 }
 #item-add-entry {
@@ -188,14 +191,27 @@ body {
   grid-area: otherCodesBox;
 }
 .container {
-
-  background-color: black;
   border: 2px solid black;
   boarder-radius: 25%;
   margin: 50px;
-  display: inline-block;
-
-
+  display: grid;
+  grid-template-columns: repeat(auto-fit);
+  grid-template-rows: auto;
+  grid-template-areas:
+    "add-entry . . . . . "
+    "subsystem subsystem . . . . "
+    "problem problem . . . . "
+    "errorCodes errorCodes . . . ."
+    "errorCodeBox1 errorCodeBox1 errorCodeBox1 . . ."
+    "errorCodeBox2 errorCodeBox2 errorCodeBox2 . . ."
+    "errorCodeBox3 errorCodeBox3 errorCodeBox3 . . ."
+    "interlocks interlocks interlocks . . ."
+    "interlockBox1 interlockBox1 interlockBox1 . . ."
+    "interlockBox2 interlockBox2 interlockBox2 . . ."
+    "interlockBox3 interlockBox3 interlockBox3 . . ."
+    "otherCodes otherCodes . . . ."
+    "otherCodesBox otherCodesBox otherCodesBox . . .";
+}
 
 }
 }
@@ -203,4 +219,11 @@ body {
 
 /*
 "errorCodeBox1 errorCodeBox2 errorCodeBox3 interlockBox1 interlockBox2 interlockBox3 otherCodesBox otherCodesBox otherCodesBox";
+*/
+
+/*
+Small mobile screens: max-width 480px
+Larger mobile screens: min-width 481px and max-width 767px
+Tablets: min-width 768px and max-width 1023px
+Desktops: min-width 1024px
 */

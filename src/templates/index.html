@@ -62,21 +62,23 @@
 </div>
      <input type="submit" value="Add Request">
 </form>
-
-
 </div>
+
+
 <div id="right-column">
-    <div class="descriptionHead">
+
+<!--    <div class="descriptionHead">-->
+    <div class="bottomcon">
         <div class="darkBlueBox">Subsystem</div>
         <div class="darkBlueBox">Problem</div>
         <div class="darkBlueBox">ErrorCodes</div>
         <div class="darkBlueBox">Interlocks</div>
         <div class="darkBlueBox">Other Problems</div>
         <div class="darkBlueBox">Results</div>
-    </div>
+<!--    </div>-->
 
 {% for request in requests %}
-<div class="rescontainer">
+<!--<div class="rescontainer">-->
   <div class="blueBox">{{ request.subsystem }}</div>
   <div class="blueBox">{{ request.problem }}</div>
   <div class="EIcontainer">
@@ -86,17 +88,22 @@
   </div>
 
   <div class="EIcontainer">
-    <div class="EIcodebox blueBox">{{ request.interlock1 }}</div>
-    <div class="EIcodebox blueBox">{{ request.interlock2 }}</div>
-    <div class="EIcodebox blueBox">{{ request.interlock3 }}</div>
+    <div class="EIcodebox">{{ request.interlock1 }}</div>
+    <div class="EIcodebox">{{ request.interlock2 }}</div>
+    <div class="EIcodebox">{{ request.interlock3 }}</div>
   </div>
-  <div class="result">{{ request.result }}</div>
+   <div class="EIcontainer">
+    <div class="EIcodebox">{{ request.res1 }}</div>
+    <div class="EIcodebox">{{ request.res2 }}</div>
+    <div class="EIcodebox">{{ request.res3 }}</div>
+  </div>
   <div class="actions entrymod" >
       <div class="textcolor">{{ request.date_created.date()}}</div>
     <a  href="/delete/{{ request.id }}" class="textcolor">Delete</a>
     <a href="/update/{{ request.id }} " class="textcolor">Change</a>
   </div>
 </div>
+
 {% endfor %}
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">

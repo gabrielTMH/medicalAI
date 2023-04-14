@@ -31,9 +31,12 @@ class UserRequest(db.Model):
     interlock1 = db.Column(db.String(200), nullable=False)
     interlock2 = db.Column(db.String(200), nullable=False)
     interlock3 = db.Column(db.String(200), nullable=False)
-
+    res1 = db.Column(db.String(200), nullable=True)
+    res2 = db.Column(db.String(200), nullable=True)
+    res3 = db.Column(db.String(200), nullable=True)
     other_codes = db.Column(db.String(200), nullable=False)
     result = db.Column(db.String(200), nullable=False)
+
 
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -65,12 +68,16 @@ def index():
 
         model, vectorizer = unpickle_and_split_pipeline()
         result = input_to_result(complete_issue_list, model, vectorizer)
+        res1=result[0]
+        res2=result[1]
+        res3=result[2]
         result = str(result)
+
 
         new_request = UserRequest(subsystem=subsystem, problem=problem, error_code1=error_code1,
                                   error_code2=error_code2, error_code3=error_code3,
                                   interlock1=interlock1, interlock2=interlock2,
-                                  interlock3=interlock3, other_codes=other_codes, result=result
+                                  interlock3=interlock3, other_codes=other_codes, result=result,res1=res1,res2=res2,res3=res3
                                   )
 
         try:
@@ -141,10 +148,10 @@ def update(id):
 def top_predictions(model, input, num_of_resolutions):
     predictions = model.predict_proba(input)[0]
     top_indices = predictions.argsort()[::-1][:num_of_resolutions]
-    answers = ""
+    answers = []
     c=1
     for i in top_indices:
-        answers += (str(c) + ". " + model.classes_[i] + " - " + str(int(float(predictions[i])*100)) + "%\t")
+        answers.append(str(c) + ". " + model.classes_[i] + " - " + str(int(float(predictions[i])*100)) + "%\t")
         c+=1
     return answers
 

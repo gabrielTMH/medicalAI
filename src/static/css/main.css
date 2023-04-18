@@ -242,15 +242,22 @@ border: 2px solid black;
 
 @media screen and (max-width: 768px) {
 /*
-make it so when we hit a min width we delet fields so that only the probability and codes are shown
+make it so when we hit a min width we delete fields so that only the probability and codes are shown
 */
+
 .container {
 grid-template-areas:
-"add-entry add-entry add-entry add-entry add-entry add-entry add-entry add-entry add-entry"
-"subsystem subsystem subsystem subsystem problem problem problem problem problem"
-"errorCodes errorCodes errorCodes interlocks interlocks interlocks otherCodes otherCodes otherCodes"
-"errorCodeBox1 errorCodeBox2 errorCodeBox3 interlockBox1 interlockBox2 interlockBox3 otherCodesBox otherCodesBox otherCodesBox";
+    "add-entry . . . "
+    "subsystem subsystem problem problem "
+    "errorCodes errorCodes . . "
+    "errorCodeBox1 errorCodeBox2 errorCodeBox3 errorCodeBox3 "
+    "interlocks interlocks interlocks . "
+    "interlockBox1 interlockBox2 interlockBox3 interlockBox3 "
+    "otherCodes otherCodes . . "
+    "otherCodesBox otherCodesBox otherCodesBox otherCodesBox ";
 }
+}
+
 @media (max-width: 550px) {
 #right-column {
     display: none;
@@ -316,19 +323,19 @@ body {
   grid-template-columns: repeat(auto-fit);
   grid-template-rows: auto;
   grid-template-areas:
-    "add-entry . . . . . "
-    "subsystem subsystem . . . . "
-    "problem problem . . . . "
-    "errorCodes errorCodes . . . ."
-    "errorCodeBox1 errorCodeBox1 errorCodeBox1 . . ."
-    "errorCodeBox2 errorCodeBox2 errorCodeBox2 . . ."
-    "errorCodeBox3 errorCodeBox3 errorCodeBox3 . . ."
-    "interlocks interlocks interlocks . . ."
-    "interlockBox1 interlockBox1 interlockBox1 . . ."
-    "interlockBox2 interlockBox2 interlockBox2 . . ."
-    "interlockBox3 interlockBox3 interlockBox3 . . ."
-    "otherCodes otherCodes . . . ."
-    "otherCodesBox otherCodesBox otherCodesBox . . .";
+    "add-entry . . "
+    "subsystem subsystem . "
+    "problem problem . "
+    "errorCodes errorCodes . "
+    "errorCodeBox1 errorCodeBox1 errorCodeBox1"
+    "errorCodeBox2 errorCodeBox2 errorCodeBox2"
+    "errorCodeBox3 errorCodeBox3 errorCodeBox3"
+    "interlocks interlocks interlocks"
+    "interlockBox1 interlockBox1 interlockBox1"
+    "interlockBox2 interlockBox2 interlockBox2"
+    "interlockBox3 interlockBox3 interlockBox3"
+    "otherCodes otherCodes . "
+    "otherCodesBox otherCodesBox otherCodesBox ";
 }
 
 }

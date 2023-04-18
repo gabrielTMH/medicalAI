@@ -4,39 +4,25 @@ body {
   font-family: 'Romana', sans-serif;
 }
 
-h2 {
-  text-align: center;
-}
-
-table {
-  margin: 0 auto;
-}
-
-th, td {
-  border: 1px solid;
-}
-
-/* Top label row for answer  */
-th {
-  background-color: #20ABB5;
-  color: #1152A4;
-}
-
 label {
   display: inline-block;
   width: 150px;
   margin-bottom: 10px;
 }
 
-
 input[type="text"] {
-    display: inline-block;
+  display: inline-block;
   width: 80%;
   padding: 5px;
   margin-bottom: 10px;
   margin-right: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
+}
+
+/* Input Boxes */
+input[type="text"], textarea {
+  background-color : #C1F4F2;
 }
 
 /* Add Request Button */
@@ -47,11 +33,6 @@ input[type="submit"] {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-
-}
-
-/* Center the button */
-input[type="submit"] {
   display: block;
   margin: 0 auto;
 }
@@ -59,16 +40,7 @@ input[type="submit"] {
 /* Add Request Hover */
 input[type="submit"]:hover {
   background-color: #e64405;
-
 }
-
-/* Input Boxes */
-input[type="text"], textarea {
-  background-color : #C1F4F2;
-}
-
-
-
 
 /*DESKTOP/FULL WEBSITE*/
 #item-add-entry {
@@ -117,21 +89,26 @@ input[type="text"], textarea {
   grid-area: otherCodesBox;
 }
 
+.EIcodebox {
+  flex: 1; /* make the boxes take up equal space */
+  border: 2px solid black; /* add a border to the boxes */
+  padding: 10px;
+  background-color: #C1F4F2;
+  margin: 3%;
+  border-radius: 5px;
+  text-align: center;
+}
 
 .blueBox {
-text-align: center;
-background-color: #C1F4F2;
-border: 2px solid black;
-border-radius: 5px;
-margin: 3%;
+    text-align: center;
+    background-color: #C1F4F2;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 3%;
 }
 
 .subsystem{
 height: max-content
-}
-
-.problem{
-width:
 }
 
 .textcolor{
@@ -156,7 +133,6 @@ margin: auto;
 width: 100%;
 }
 
-
 .descriptionHead, .rescontainer {
     display: inline-block;
     vertical-align: top;
@@ -180,7 +156,6 @@ width: 100%;
     grid-gap: 10px;
   }
 
-
 .darkBlueBox{
 text-align: center;
 background-color: #20ABB5;
@@ -196,40 +171,12 @@ height: max-content;
   display: flex;
  }
 
-.rescontainer {
-color: #FBF8F3
-border: 2px solid black;
-  boarder-radius: 25px;
-  margin: 50px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit);
-  grid-template-rows: auto;
-   grid-template-areas:
-    "add-entry . . . . . . . ."
-    "subsystem subsystem problem problem . . . . ."
-    "errorCodes . . interlocks . . otherCodes . ."
-    "errorCodeBox1 errorCodeBox2 errorCodeBox3 interlockBox1 interlockBox2 interlockBox3 otherCodesBox otherCodesBox otherCodesBox";
-
-}
-
-
-.EIcodebox {
-  flex: 1; /* make the boxes take up equal space */
-  border: 2px solid black; /* add a border to the boxes */
-  padding: 10px;
-  background-color: #C1F4F2;
-  margin: 3%;
-  border-radius: 5px;
-  text-align: center;
-}
-
 .container {
   background-color: #20ABB5;
   border: 2px solid black;
   boarder-radius: 25px;
   margin: 50px;
   display: grid;
-
   grid-template-columns: repeat(auto-fit);
   grid-template-rows: auto;
   grid-template-areas:
@@ -238,7 +185,6 @@ border: 2px solid black;
     "errorCodes . . interlocks . . otherCodes . ."
     "errorCodeBox1 errorCodeBox2 errorCodeBox3 interlockBox1 interlockBox2 interlockBox3 otherCodesBox otherCodesBox otherCodesBox";
 }
-
 
 @media screen and (max-width: 768px) {
 /*
@@ -253,61 +199,9 @@ grid-template-areas:
 }
 @media (max-width: 550px) {
 #right-column {
-    display: none;
+
     }
-body {
-  color: #1152A4;
-  background-color: #FBF8F3;
-  font-family: 'Romana', sans-serif;
-}
-#item-add-entry {
-  grid-area: add-entry;
-}
-#item-problem {
-  grid-area: problem;
-}
-#item-problemBox {
-  grid-area: problemBox;
-}
-#item-subsystem {
-  grid-area: subsystem;
-}
-#item-subsystemBox {
-  grid-area: subsystemBox;
-}
-#item-errorCodes {
-  grid-area: errorCodes;
-}
-#item-interlocks {
-  grid-area: interlocks;
-}
 
-#item-otherCodes {
-  grid-area: otherCodes;
-}
-
-#item-errorCodeBox1 {
-  grid-area: errorCodeBox1;
-}
-
-#item-errorCodeBox2 {
-  grid-area: errorCodeBox2;
-}
-#item-errorCodeBox3 {
-  grid-area: errorCodeBox3 ;
-}
-#item-interlockBox1 {
-  grid-area: interlockBox1;
-}
-#item-interlockBox2 {
-  grid-area: interlockBox2;
-}
-#item-interlockBox3 {
-  grid-area: interlockBox3;
-}
-#item-otherCodesBox {
-  grid-area: otherCodesBox;
-}
 .container {
   border: 2px solid black;
   boarder-radius: 25%;

@@ -6,7 +6,6 @@
 
 
 {% block body %}
-
 <form action="/" method="POST">
 <div class="container">
     <div id="item-add-entry">
@@ -16,21 +15,13 @@
         <label for="subsystem">Sub System:</label>
         <input type="text" name="subsystem" id="subsystem">
     </div>
-<!--    <div id="item-subsystemBox">-->
-<!--        <input type="text" name="subsystem" id="subsystem">-->
-<!--    </div>-->
     <div id="item-problem">
         <label for="problem">Problem:</label>
         <input type="text" name="problem" id="problem">
     </div>
-<!--    <div id="item-problemBox">-->
-<!--        <input type="text" name="problem" id="problem">-->
-<!--    </div>-->
-
     <div id="item-errorCodes">
         Error Codes
     </div>
-
     <div id="item-errorCodeBox1">
             <input type="text" name="error_code1" id="error_code1" class="error_code">
     </div>
@@ -40,7 +31,6 @@
     <div id="item-errorCodeBox3">
         <input type="text" name="error_code3" id="error_code3" class="error_code">
     </div>
-
     <div id="item-interlocks">
         Interlock Codes
     </div>
@@ -53,7 +43,6 @@
     <div id="item-interlockBox3">
         <input type="text" name="interlock3" id="interlock3" class="interlock">
     </div>
-
     <div id="item-otherCodes">
         <label for="other_codes">Other Codes</label>
     </div>
@@ -61,15 +50,12 @@
         <input type="text" name="other_codes" id="other_codes">
     </div>
     </div>
-
      <input type="submit" value="Add Request">
 </form>
 </div>
 
 
 <div id="right-column">
-
-<!--    <div class="descriptionHead">-->
     <div class="bottomcon">
         <div class="darkBlueBox">Subsystem</div>
         <div class="darkBlueBox">Problem</div>
@@ -78,38 +64,34 @@
         <div class="darkBlueBox">Other Problems</div>
         <div class="darkBlueBox">Results</div>
         <div></div>
-<!--    </div>-->
 
-{% for request in requests %}
-<!--<div class="rescontainer">-->
-  <div class="blueBox request">{{ request.subsystem }}</div>
-  <div class="blueBox problem">{{ request.problem }}</div>
-  <div class="EIcontainer">
-    <div class="EIcodebox">{{ request.error_code1 }}</div>
-    <div class="EIcodebox ">{{ request.error_code2 }}</div>
-    <div class="EIcodebox ">{{ request.error_code3 }}</div>
-  </div>
-
-  <div class="EIcontainer">
-    <div class="EIcodebox">{{ request.interlock1 }}</div>
-    <div class="EIcodebox">{{ request.interlock2 }}</div>
-    <div class="EIcodebox">{{ request.interlock3 }}</div>
-  </div>
-        <div class="blueBox">{{ request.other_codes }}</div>
-   <div class="EIcontainer">
-    <div class="EIcodebox">{{ request.res1 }}</div>
-    <div class="EIcodebox">{{ request.res2 }}</div>
-    <div class="EIcodebox">{{ request.res3 }}</div>
-  </div>
-  <div class="actions entrymod" >
-      <div class="textcolor">{{ request.date_created.date()}}</div>
-    <a  href="/delete/{{ request.id }}" class="textcolor">Delete</a>
-    <a href="/update/{{ request.id }} " class="textcolor">Change</a>
-  </div>
-
-
-{% endfor %}
+        {% for request in requests %}
+      <div class="blueBox request">{{ request.subsystem }}</div>
+      <div class="blueBox problem">{{ request.problem }}</div>
+      <div class="EIcontainer">
+        <div class="EIcodebox">{{ request.error_code1 }}</div>
+        <div class="EIcodebox">{{ request.error_code2 }}</div>
+        <div class="EIcodebox">{{ request.error_code3 }}</div>
+      </div>
+      <div class="EIcontainer">
+        <div class="EIcodebox">{{ request.interlock1 }}</div>
+        <div class="EIcodebox">{{ request.interlock2 }}</div>
+        <div class="EIcodebox">{{ request.interlock3 }}</div>
+      </div>
+      <div class="blueBox">{{ request.other_codes }}</div>
+      <div class="EIcontainer">
+        <div class="EIcodebox">{{ request.res1 }}</div>
+        <div class="EIcodebox">{{ request.res2 }}</div>
+        <div class="EIcodebox">{{ request.res3 }}</div>
+      </div>
+      <div class="actions entrymod" >
+        <div class="textcolor">{{ request.date_created.date()}}</div>
+        <a  href="/delete/{{ request.id }}" class="textcolor">Delete</a>
+        <a href="/update/{{ request.id }} " class="textcolor">Change</a>
+      </div>
+    {% endfor %}
 </div>
+
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>

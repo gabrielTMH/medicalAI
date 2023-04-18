@@ -14,14 +14,14 @@
     </div>
     <div id="item-subsystem">
         <label for="subsystem">Sub System:</label>
-        <input type="text" name="subsystem" id="subsystem">
+        <input type="text" name="subsystem" id="subsystem" list="subsystem_codes">
     </div>
 <!--    <div id="item-subsystemBox">-->
 <!--        <input type="text" name="subsystem" id="subsystem">-->
 <!--    </div>-->
     <div id="item-problem">
         <label for="problem">Problem:</label>
-        <input type="text" name="problem" id="problem">
+        <input type="text" name="problem" id="problem" list="problem_codes">
     </div>
 <!--    <div id="item-problemBox">-->
 <!--        <input type="text" name="problem" id="problem">-->
@@ -30,28 +30,28 @@
     <div id="item-errorCodes">
         Error Codes
     </div>
-
     <div id="item-errorCodeBox1">
-            <input type="text" name="error_code1" id="error_code1" class="error_code">
+        <input type="text" name="error_code1" id="error_code1" class="error_code" list="error_codes">
+
     </div>
     <div id="item-errorCodeBox2">
-        <input type="text" name="error_code2" id="error_code2" class="error_code">
+        <input type="text" name="error_code2" id="error_code2" class="error_code" list="error_codes">
     </div>
     <div id="item-errorCodeBox3">
-        <input type="text" name="error_code3" id="error_code3" class="error_code">
+        <input type="text" name="error_code3" id="error_code3" class="error_code" list="error_codes">
     </div>
 
     <div id="item-interlocks">
         Interlock Codes
     </div>
     <div id="item-interlockBox1">
-           <input type="text" name="interlock1" id="interlock1" class="interlock">
+           <input type="text" name="interlock1" id="interlock1" class="interlock" list="interlock_codes">
     </div>
     <div id="item-interlockBox2">
-        <input type="text" name="interlock2" id="interlock2" class="interlock">
+        <input type="text" name="interlock2" id="interlock2" class="interlock" list="interlock_codes">
     </div>
     <div id="item-interlockBox3">
-        <input type="text" name="interlock3" id="interlock3" class="interlock">
+        <input type="text" name="interlock3" id="interlock3" class="interlock" list="interlock_codes">
     </div>
 
     <div id="item-otherCodes">
@@ -153,6 +153,80 @@
     } );
   </script>
 </div>
+    <datalist id="subsystem_codes">
+            <option value="Beam">
+            <option value="MLS">
+            <option value="Water">
+    </datalist>
+    <datalist id="problem_codes">
+            <option value="BGM Fault">
+            <option value="BMAG and HVCB interlocks">
+            <option value="BMAG and UDRS interlocks">
+            <option value="BMAG interlock">
+            <option value="Continuous flow fault">
+            <option value="FLOW interlock">
+            <option value="GFIL and HVCB Faults">
+            <option value="Intermittent FLOW faults">
+            <option value="MLC Initialization Error">
+            <option value="MLC Interlock">
+            <option value="MLC Leaf Error">
+            <option value="MLC Leaf Stall">
+            <option value="MLC Leaf Stopping Intermittently">
+            <option value="MLC losing connection, treatment invalid">
+            <option value="MLC Secondary Feedback Error">
+            <option value="MLC stuck leaf">
+            <option value="MLC Stuck Open">
+            <option value="MLC Won't go to plan, Leaf Failure">
+            <option value="MLC, COL error">
+            <option value="Output too high">
+            <option value="UDRS and HWFA faults">
+            <option value="UDRS with IMRT and Gantry rotation">
+            <option value="Underdose">
+            <option value="Underdose all energies">
+            <option value="Underdose in 15MV in morning">
+            <option value="Orange">
+            <option value="Underdose in 6MV">
+            <option value="Underdose in 8MV">
+            <option value="Underdose in 9e">
+            <option value="Underdose in Electrons">
+            <option value="Underdose in morning">
+            <option value="Underdose in Photons">
+            <option value="Underdose on EDW">
+            <option value="Underdose when gantry 180 degrees">
+            <option value="Underdose when rotating gantry">
+            <option value="Yield monitor error">
+    </datalist>
+    <datalist id="error_codes">
+            <option value="210005">
+            <option value="AD Overcurrent">
+            <option value="EE ROM">
+            <option value="FIL">
+            <option value="HD AD+">
+            <option value="HD TEMP">
+            <option value="HV OFF">
+            <option value="HVPS+">
+            <option value="Leaf Stall">
+    </datalist>
+    <datalist id="interlock_codes">
+            <option value="BGM">
+            <option value="BMAG">
+            <option value="COL">
+            <option value="EXQ2">
+            <option value="FLOW">
+            <option value="GFIL">
+            <option value="HVCB">
+            <option value="HWFA">
+            <option value="INIT">
+            <option value="KFIL">
+            <option value="MLC">
+            <option value="PUMP">
+            <option value="SFB">
+            <option value="UDRS">
+            <option value="UDRS1">
+            <option value="UDRS2">
+            <option value="VAC2">
+            <option value="YIELD">
+    </datalist>
 
 </form>
 

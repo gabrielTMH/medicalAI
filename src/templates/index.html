@@ -64,49 +64,52 @@
 
      <input type="submit" value="Add Request">
 </form>
-
-
 </div>
+
+
 <div id="right-column">
-<table class="table-bordered">
-    <tr>
-    <th>Sub System</th>
-    <th>Problem</th>
-    <th>Error Code 1</th>
-    <th>Error Code 2</th>
-    <th>Error Code 3</th>
-    <th>Interlock 1</th>
-    <th>Interlock 2</th>
-    <th>Interlock 3</th>
-    <th>Other Codes</th>
-    <th>Result</th>
-    <th>Request Date</th>
-    <th>Actions</th>
-    </tr>
+
+<!--    <div class="descriptionHead">-->
+    <div class="bottomcon">
+        <div class="darkBlueBox">Subsystem</div>
+        <div class="darkBlueBox">Problem</div>
+        <div class="darkBlueBox">ErrorCodes</div>
+        <div class="darkBlueBox">Interlocks</div>
+        <div class="darkBlueBox">Other Problems</div>
+        <div class="darkBlueBox">Results</div>
+        <div></div>
+<!--    </div>-->
 
 {% for request in requests %}
-<tr>
-    <td>{{ request.subsystem }}</td>
-    <td>{{ request.problem }}</td>
-    <td>{{ request.error_code1 }}</td>
-    <td>{{ request.error_code2 }}</td>
-    <td>{{ request.error_code3 }}</td>
-    <td>{{ request.interlock1 }}</td>
-    <td>{{ request.interlock2 }}</td>
-    <td>{{ request.interlock3 }}</td>
-    <td>{{ request.other_codes }}</td>
-    <td>{{ request.result }}</td>
-    <td>{{ request.date_created.date() }}</td>
-    <td>
-        <a href="/delete/{{ request.id }}">Delete</a>
-        <br>
-        <a href="/update/{{ request.id }}">Change</a>
+<!--<div class="rescontainer">-->
+  <div class="blueBox request">{{ request.subsystem }}</div>
+  <div class="blueBox problem">{{ request.problem }}</div>
+  <div class="EIcontainer">
+    <div class="EIcodebox">{{ request.error_code1 }}</div>
+    <div class="EIcodebox ">{{ request.error_code2 }}</div>
+    <div class="EIcodebox ">{{ request.error_code3 }}</div>
+  </div>
 
-    </td>
-</tr>
+  <div class="EIcontainer">
+    <div class="EIcodebox">{{ request.interlock1 }}</div>
+    <div class="EIcodebox">{{ request.interlock2 }}</div>
+    <div class="EIcodebox">{{ request.interlock3 }}</div>
+  </div>
+        <div class="blueBox">{{ request.other_codes }}</div>
+   <div class="EIcontainer">
+    <div class="EIcodebox">{{ request.res1 }}</div>
+    <div class="EIcodebox">{{ request.res2 }}</div>
+    <div class="EIcodebox">{{ request.res3 }}</div>
+  </div>
+  <div class="actions entrymod" >
+      <div class="textcolor">{{ request.date_created.date()}}</div>
+    <a  href="/delete/{{ request.id }}" class="textcolor">Delete</a>
+    <a href="/update/{{ request.id }} " class="textcolor">Change</a>
+  </div>
+
+
 {% endfor %}
-</table>
-
+</div>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>

@@ -75,12 +75,13 @@
         <div class="darkBlueBox">Interlocks</div>
         <div class="darkBlueBox">Other Problems</div>
         <div class="darkBlueBox">Results</div>
+        <div></div>
 <!--    </div>-->
 
 {% for request in requests %}
 <!--<div class="rescontainer">-->
-  <div class="blueBox">{{ request.subsystem }}</div>
-  <div class="blueBox">{{ request.problem }}</div>
+  <div class="blueBox request">{{ request.subsystem }}</div>
+  <div class="blueBox problem">{{ request.problem }}</div>
   <div class="EIcontainer">
     <div class="EIcodebox">{{ request.error_code1 }}</div>
     <div class="EIcodebox ">{{ request.error_code2 }}</div>
@@ -92,6 +93,7 @@
     <div class="EIcodebox">{{ request.interlock2 }}</div>
     <div class="EIcodebox">{{ request.interlock3 }}</div>
   </div>
+        <div class="blueBox">{{ request.other_codes }}</div>
    <div class="EIcontainer">
     <div class="EIcodebox">{{ request.res1 }}</div>
     <div class="EIcodebox">{{ request.res2 }}</div>

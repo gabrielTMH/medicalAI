@@ -151,7 +151,7 @@ def top_predictions(model, input, num_of_resolutions):
     answers = []
     c=1
     for i in top_indices:
-        answers.append(str(c) + ". " + model.classes_[i] + " - " + str(int(float(predictions[i])*100)) + "%\t")
+        answers.append(str(c) + ". " + model.classes_[i] + ": " + str(int(float(predictions[i])*100)) + "%")
         c+=1
     return answers
 

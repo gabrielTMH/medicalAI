@@ -127,6 +127,7 @@ input[type="text"], textarea {
 }
 
 .blueBox {
+text-align: center;
 background-color: #C1F4F2;
 border: 2px solid black;
 border-radius: 5px;
@@ -145,6 +146,12 @@ width:
 color: #FBF8F3;
 }
 
+.problem{
+margin: auto;
+height: 80%;
+width: 100%;
+}
+
 .entrymod{
 background-color: #FA792B;
 color: #FBF8F3;
@@ -153,6 +160,8 @@ display: flex;
 flex-direction: column;
 align-items: center;
 height: max-content;
+margin: auto;
+width: 100%;
 }
 
 
@@ -161,6 +170,13 @@ height: max-content;
     vertical-align: top;
   }
 
+.request{
+height: 20%;
+text-align: center;
+margin: auto;
+width: 100%;
+}
+
 .descriptionHead{
  display: flex;
   flex-wrap: wrap;
@@ -168,12 +184,13 @@ height: max-content;
 
 .bottomcon {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     grid-gap: 10px;
   }
 
 
 .darkBlueBox{
+text-align: center;
 background-color: #20ABB5;
 text-color: #1152A4;
 border-radius: 5px;
@@ -211,7 +228,7 @@ border: 2px solid black;
   background-color: #C1F4F2;
   margin: 3%;
   border-radius: 5px;
-
+  text-align: center;
 }
 
 .container {
